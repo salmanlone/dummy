@@ -1,4 +1,4 @@
-import { actionTypes } from "./actions";
+import { actionTypes } from "../actions";
 
 export const exampleInitialState = {
   count: 0,
@@ -32,6 +32,18 @@ function reducer(state = exampleInitialState, action) {
       return {
         ...state,
         ...{ count: exampleInitialState.count }
+      };
+
+    case actionTypes.LOAD_DATA_SUCCESS:
+      return {
+        ...state,
+        ...{ placeholderData: action.data }
+      };
+
+    case actionTypes.TICK_CLOCK:
+      return {
+        ...state,
+        ...{ lastUpdate: action.ts, light: !!action.light }
       };
 
     default:
