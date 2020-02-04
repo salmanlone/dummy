@@ -19,7 +19,7 @@ i18n
     {
       fallbackLng: "en",
       preload: ["en", "de"], // preload all langages
-      ns: ["common", "home", "page2"], // need to preload all the namespaces
+      ns: ["common", "home", "salary"], // need to preload all the namespaces
       backend: {
         loadPath: path.join(__dirname, "/locales/{{lng}}/{{ns}}.json"),
         addPath: path.join(__dirname, "/locales/{{lng}}/{{ns}}.missing.json")

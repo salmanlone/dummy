@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Layout from "../app/components/MyLayout";
+import Layout from "../app/components/Layout";
 import { withRouter } from "next/router";
 class Post extends Component {
   constructor(props) {
