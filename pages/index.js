@@ -5,7 +5,7 @@ import { compose } from "redux";
 import PureComponent from "../app/components/PureComponent";
 import ExtendedComponent from "../app/components/ExtendedComponent";
 import ComponentWithTrans from "../app/components/ComponentWithTrans";
-import { withI18next } from "../lib/withI18next";
+import { withI18next } from "../app/lib/withI18next";
 
 const Test = ({ t }) => (
   <div>

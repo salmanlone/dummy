@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { compose } from "redux";
-import { increment } from "../action";
-import { withI18next } from "../lib/withI18next";
+import { increment } from "../app/actions";
+import { withI18next } from "../app/lib/withI18next";
 export class componentName extends Component {
   Increament = () => {
     this.props.Increament();
