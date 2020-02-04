@@ -5,7 +5,7 @@ import { Provider } from "react-redux";
 import withRedux from "next-redux-wrapper";
 import withReduxSaga from "next-redux-saga";
 import initialI18nInstance from "../i18n";
-import LanguageSwitch from "../components/LanguageSwitch";
+import LanguageSwitch from "../app/components/LanguageSwitch";
 import createStore from "../app/store";
 class MyApp extends App {
   render() {
