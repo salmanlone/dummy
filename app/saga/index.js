@@ -3,7 +3,8 @@ import { all, call, put, take, takeLatest } from "redux-saga/effects";
 import es6promise from "es6-promise";
 import "isomorphic-unfetch";
 
-import { actionTypes, failure, loadDataSuccess, tickClock } from "../actions";
+import { failure, loadDataSuccess, tickClock } from "../actions";
+import actionTypes from "../actions/action-type";
 
 es6promise.polyfill();
 
