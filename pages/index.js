@@ -14,8 +14,8 @@ const Test = ({ t }) => (
       <button>{t("sample_button")}</button>
     </div>
     <ComponentWithTrans />
-    <Link href="/page2">
-      <a>{t("link.gotoPage2")}</a>
+    <Link href="/salary">
+      <a>{t("link.gotosalary")}</a>
     </Link>
     <br />
     <Link href="/page3">
