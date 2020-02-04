@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/salmanlone/react-next-redux-saga-i18ln/issues"
   },
-  "homepage": "https://github.com/salmanlone/react-next-redux-saga-i18ln#readme"
+  "homepage": "https://github.com/salmanlone/react-next-redux-saga-i18ln#readme",
+  "dependencies": {
+    "next": "^9.2.1",
+    "react": "^16.12.0",
+    "react-redux": "^7.1.3"
+  }
 }
