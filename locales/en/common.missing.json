@@ -1,3 +1,4 @@
 {
-  "integrates_react-i18next": "integrates_react-i18next"
+  "integrates_react-i18next": "integrates_react-i18next",
+  "testing": "Hi"
 }
