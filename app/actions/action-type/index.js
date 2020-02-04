@@ -1,0 +1,5 @@
+export const actionTypes = {
+  FAILURE: "FAILURE",
+  INCREMENT: "INCREMENT",
+  DECREMENT: "DECREMENT",
+  RESET: "RESET"
