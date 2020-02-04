@@ -1,0 +1,19 @@
+{
+  "name": "react-next-redux-saga-i18ln",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/salmanlone/react-next-redux-saga-i18ln.git"
+  },
+  "author": "salman tariq lone",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/salmanlone/react-next-redux-saga-i18ln/issues"
+  },
+  "homepage": "https://github.com/salmanlone/react-next-redux-saga-i18ln#readme"
+}
