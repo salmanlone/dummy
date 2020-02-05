@@ -6,9 +6,13 @@ import ComponentWithTrans from "../app/components/ComponentWithTrans";
 import { withI18next } from "../app/lib/withI18next";
 import Layout from "../app/components/Layout";
 import SearchCard from "../app/components/SearchCard";
+import Head from "next/head";
 
 const Test = ({ t }) => (
   <div>
+    <Head>
+      <title>My page title</title>
+    </Head>
     <Layout>
       <h1>{t("title")}</h1>
       <h2>{t("subTitle")}</h2>
