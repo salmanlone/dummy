@@ -8,13 +8,13 @@ import Layout from "../app/components/Layout";
 import SearchCard from "../app/components/SearchCard";
 import Head from "next/head";
 
-const Test = ({ t }) => (
+export const Test = ({ t }) => (
   <div>
     <Head>
       <title>My page title</title>
     </Head>
     <Layout>
-      <h1>{t("title")}</h1>
+      <h1>What Are You Worth?</h1>
       <h2>{t("subTitle")}</h2>
       {/* <p>{t("common:integrates_react-i18next")}</p>
     <p>{t("sample_test")}</p> */}
