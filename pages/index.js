@@ -5,6 +5,7 @@ import { compose } from "redux";
 import ComponentWithTrans from "../app/components/ComponentWithTrans";
 import { withI18next } from "../app/lib/withI18next";
 import Layout from "../app/components/Layout";
+import SearchCard from "../app/components/SearchCard";
 
 const Test = ({ t }) => (
   <div>
@@ -25,6 +26,7 @@ const Test = ({ t }) => (
       {/* <Link as={`/p/day-la-bai-post`} href={`/post?title=day-la-bai-post`}>
         <a>Bai</a>
       </Link> */}
+      <SearchCard />
     </Layout>
   </div>
 );

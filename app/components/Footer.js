@@ -1,37 +1,37 @@
 const Footer = () => (
-  <div class="findSocial">
+  <div className="findSocial">
     <h3>Find us on social media:</h3>
     <a
       target="_blank"
       href="https://www.facebook.com/monster"
       rel="noopener noreferrer"
-      class="mdi mdi-facebook"
+      className="mdi mdi-facebook"
     >
-      <span class="sr-only">Facebook</span>
+      <span className="sr-only">Facebook</span>
     </a>
     <a
       target="_blank"
       href="https://twitter.com/Monster"
       rel="noopener noreferrer"
-      class="mdi mdi-twitter"
+      className="mdi mdi-twitter"
     >
-      <span class="sr-only">Twitter</span>
+      <span className="sr-only">Twitter</span>
     </a>
     <a
       target="_blank"
       href="https://www.instagram.com/monster"
       rel="noopener noreferrer"
-      class="mdi mdi-instagram"
+      className="mdi mdi-instagram"
     >
-      <span class="sr-only">Instagram</span>
+      <span className="sr-only">Instagram</span>
     </a>
     <a
       target="_blank"
       href="https://www.youtube.com/monster"
       rel="noopener noreferrer"
-      class="mdi mdi-youtube-play"
+      className="mdi mdi-youtube-play"
     >
-      <span class="sr-only">YouTube</span>
+      <span className="sr-only">YouTube</span>
     </a>
   </div>
 );
