@@ -21,10 +21,10 @@ class MyApp extends App {
             initialLanguage={initialLanguage}
           >
             <React.Fragment>
-              <I18nR ns="common" wait>
+              {/* <I18nR ns="common" wait>
                 {t => <h1>{t("common:integrates_react-i18next")}</h1>}
-              </I18nR>
-              <LanguageSwitch />
+              </I18nR> */}
+              {/* <LanguageSwitch /> */}
               <Component {...pageProps} />
             </React.Fragment>
           </I18nextProvider>
