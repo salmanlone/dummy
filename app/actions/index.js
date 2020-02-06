@@ -30,6 +30,13 @@ export function loadDataSuccess(data) {
   };
 }
 
+export function loadSalarySuccess(data) {
+  return {
+    type: actionTypes.LOAD_SALARY_SUCCESS,
+    data
+  };
+}
+
 export function startClock() {
   return { type: actionTypes.START_CLOCK };
 }

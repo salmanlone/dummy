@@ -6,3 +6,5 @@ export const LOAD_DATA = "LOAD_DATA";
 export const LOAD_DATA_SUCCESS = "LOAD_DATA_SUCCESS";
 export const START_CLOCK = "START_CLOCK";
 export const TICK_CLOCK = "TICK_CLOCK";
+export const FIND_SALARY = "FIND_SALARY";
+export const LOAD_SALARY_SUCCESS = "LOAD_SALARY_SUCCESS";
