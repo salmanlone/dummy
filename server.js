@@ -38,15 +38,25 @@ i18n
           "/locales",
           express.static(path.join(__dirname, "/locales"))
         );
-        //Server Side Support for Clean URLs
-        server.get("/p/:id", (req, res) => {
-          const actualPage = "/post";
-          const queryParams = { title: req.params.id };
-          console.log("req.params.id==>", req.params.id);
-          console.log("rreq.query==>", req.query);
+        // passing the language as a query param to some custome URLs
 
+        server.get("/:lang", (req, res) => {
+          const actualPage = "/";
+          const queryParams = { lang: req.params.lang };
           app.render(req, res, actualPage, queryParams);
-        });
+        })
+
+        server.get("/:lang/salary", (req, res) => {
+          const actualPage = "/salary";
+          const queryParams = { lang: req.params.lang };
+          app.render(req, res, actualPage, queryParams);
+        })
+
+        server.get("/:lang/salary/:position/:location", (req, res) => {
+          const actualPage = "/salary";
+          const queryParams = { lang: req.params.lang, position: req.params.position, location: req.params.location  };
+          app.render(req, res, actualPage, queryParams);
+        })
 
         // missing keys
         server.post(

@@ -11,7 +11,7 @@ const options = {
   defaultNS: "common",
 
   debug: false, // process.env.NODE_ENV !== 'production',
-  saveMissing: true,
+  saveMissing: false,
 
   interpolation: {
     escapeValue: false, // not needed for react!!
@@ -20,7 +20,29 @@ const options = {
       if (format === "uppercase") return value.toUpperCase();
       return value;
     }
-  }
+  },
+  // order and from where user language should be detected
+  order: ['path', 'querystring', 'cookie', 'localStorage', 'navigator', 'htmlTag', 'subdomain'],
+
+  // keys or params to lookup language from
+  lookupQuerystring: 'lng',
+  lookupCookie: 'i18next',
+  lookupLocalStorage: 'i18nextLng',
+  lookupFromPathIndex: 0,
+  lookupFromSubdomainIndex: 0,
+  browserLanguageDetection: true,
+
+  // cache user language on
+  caches: ['localStorage', 'cookie'],
+  excludeCacheFor: ['cimode'], // languages to not persist (cookie, localStorage)
+
+  // optional expire and domain for set cookie
+  cookieMinutes: 10,
+  cookieDomain: 'myDomain',
+
+
+  // only detect languages that are in the whitelist
+  checkWhitelist: true
 };
 
 // for browser use xhr backend to load translations and browser lng detector

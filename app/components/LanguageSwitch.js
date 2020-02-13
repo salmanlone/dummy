@@ -16,11 +16,11 @@ const LanguageSwitch = ({ router }) => (
         <a onClick={() => i18n.changeLanguage("de")}>de</a>
       </Link>
     </li>
-    <li>
+    {/* <li>
       <Link href={`${router.pathname}`}>
         <a onClick={() => i18n.changeLanguage("vi")}>vi</a>
       </Link>
-    </li>
+    </li> */}
   </ul>
 );
 

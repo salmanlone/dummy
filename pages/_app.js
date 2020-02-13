@@ -7,10 +7,17 @@ import withReduxSaga from "next-redux-saga";
 import initialI18nInstance from "../i18n";
 import LanguageSwitch from "../app/components/LanguageSwitch";
 import createStore from "../app/store";
+import { withRouter } from "next/router";
 class MyApp extends App {
   render() {
-    const { Component, pageProps, store } = this.props;
+    const { Component, pageProps, store, router } = this.props;
     const { i18n, initialI18nStore, initialLanguage } = pageProps || {};
+
+
+
+//  changing the language depending on the query param passed in the URL.
+    console.log("query :: ",router.query)
+    initialI18nInstance.changeLanguage(router.query['lang'])    
 
     return (
       <Container>
@@ -21,10 +28,10 @@ class MyApp extends App {
             initialLanguage={initialLanguage}
           >
             <React.Fragment>
-              {/* <I18nR ns="common" wait>
+              <I18nR ns="common" wait>
                 {t => <h1>{t("common:integrates_react-i18next")}</h1>}
-              </I18nR> */}
-              {/* <LanguageSwitch /> */}
+              </I18nR>
+              <LanguageSwitch />
               <Component {...pageProps} />
             </React.Fragment>
           </I18nextProvider>
@@ -33,4 +40,4 @@ class MyApp extends App {
     );
   }
 }
-export default withRedux(createStore)(withReduxSaga({ async: true })(MyApp));
+export default withRouter(withRedux(createStore)(withReduxSaga({ async: true })(MyApp)));
