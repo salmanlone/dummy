@@ -13,13 +13,16 @@ describe("With Enzyme", () => {
   });
 });
 
-describe("With Enzyme Home", () => {
-    it('App shows "Hello, Home!"', () => {
-      const autocomplete = shallow(<Autocomplete placeholder="test"/>);
-  
-      expect(autocomplete.find("input").props().placeholder).toEqual("test");
-    });
+describe("Autocomplete component", () => {
+  it("verify the placeholder text", () => {
+    const autocomplete = shallow(<Autocomplete placeholder="test" />);
+    expect(autocomplete.find("input").props().placeholder).toEqual("test");
   });
+  it("verify the type", () => {
+    const autocomplete = shallow(<Autocomplete />);
+    expect(autocomplete.find("input").type()).toEqual("input");
+  });
+});
 
 describe("With Snapshot Testing", () => {
   it('App shows "Hello, Sunshine!"', () => {

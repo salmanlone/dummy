@@ -1,38 +1,67 @@
 import React from "react";
-import Link from "next/link";
 import { connect } from "react-redux";
 import { compose } from "redux";
-import ComponentWithTrans from "../app/components/ComponentWithTrans";
-import { withI18next } from "../app/lib/withI18next";
 import Layout from "../app/components/Layout";
-import SearchCard from "../app/components/SearchCard";
 import Head from "next/head";
+import { increment, loadData } from "../app/actions";
+import Autocomplete from "../app/components/Autocomplete";
+import Button from "../app/components/Button";
 
-export const Test = ({ t }) => (
-  <div>
-    <Head>
-      <title>My page title</title>
-    </Head>
-    <Layout>
-      <h1>What Are You Worth?</h1>
-      <h2>{t("subTitle")}</h2>
-      {/* <p>{t("common:integrates_react-i18next")}</p>
-    <p>{t("sample_test")}</p> */}
-      {/* <div>
-      <button>{t("sample_button")}</button>
-    </div> */}
-      {/* <ComponentWithTrans /> */}
-      <br />
-      {/* <Link as={`demoRedux-1234`} href="/demoRedux?title=1234">
-        <a>{t("link.gotoPage3")}</a>
-      </Link> */}
-      <br />
-      {/* <Link as={`/p/day-la-bai-post`} href={`/post?title=day-la-bai-post`}>
+const linkStyle = {
+  height: "500px",
+  width: "700px"
+};
+
+export class Test extends React.Component {
+  render() {
+    return (
+      <div>
+        <Head>
+          <title>My page title</title>
+        </Head>
+        <Layout>
+          <h1>What Are You Worth?</h1>
+          <br />
+          {/* <Link as={`/p/day-la-bai-post`} href={`/post?title=day-la-bai-post`}>
         <a>Bai</a>
       </Link> */}
-      <SearchCard />
-    </Layout>
-  </div>
-);
+          <Autocomplete placeholder="job title" />
+          <Autocomplete placeholder="location" />
+          <Button title="Find Salary" callbackHandler={this.props.load} />
+          <br />
+          <br />
+          <p>
+            {this.props.salaryData !== undefined
+              ? "this.props.salaryData"
+              : "test"}
+          </p>
+          <p>{this.props.salaryData ? this.props.salaryData : "test2"}</p>
+        </Layout>
+      </div>
+    );
+  }
+}
 
-export default compose(connect(), withI18next(["home", "common"]))(Test);
+const mapStateToProps = state => {
+  return {
+    count: state.count,
+    salaryData: state.salaryData
+  };
+};
+const mapDispatchToProps = dispatch => {
+  return {
+    Increament: () => {
+      dispatch(increment());
+    },
+    load: () => {
+      console.log("load");
+      dispatch(loadData());
+    }
+  };
+};
+
+Test.getInitialProps = async () => ({
+  namespacesRequired: ["common"]
+});
+
+export default compose(connect(mapStateToProps, mapDispatchToProps))(Test);

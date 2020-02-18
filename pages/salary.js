@@ -1,24 +1,29 @@
 import React from "react";
-import Link from "next/link";
 import Layout from "../app/components/Layout";
 import Breadcrumb from "../app/components/Breadcrumb";
-
-import ComponentWithTrans from "../app/components/ComponentWithTrans";
-import { withI18next } from "../app/lib/withI18next";
+import { withTranslation, Link, i18n } from "../i18n";
 
 const Salary = ({ t }) => (
   <div>
     <Layout>
-      <h1>{t("welcome to Salary")}</h1>
-      <p>{t("common:integrates_react-i18next")}</p>
+      {/* <h1>{t("welcome to Salary")}</h1>
+      <p>{t("common:integrates_react-i18next")}</p> */}
+      <button onClick={() => i18n.changeLanguage("en")}>Change to en</button>
+      <button onClick={() => i18n.changeLanguage("de")}>Change to de</button>
       <Breadcrumb />
 
-      {/* <ComponentWithTrans /> */}
-      {/* <Link href="/">
-        <a>{t("link.gotoPage1")}</a>
-      </Link> */}
+      <p> {t("te")}</p>
+      <p> {t("testing123")}</p>
+      <p> {t("transComponent")}</p>
+      <p> {t("extendedComponent")}</p>
+      <p> {t("pureComponent")}</p>
+      <p> {t("integrates_react-i18next")}</p>
     </Layout>
   </div>
 );
 
-export default withI18next(["Salary", "common"])(Salary);
+Salary.getInitialProps = async () => ({
+  namespacesRequired: ["common"]
+});
+
+export default withTranslation("common")(Salary);

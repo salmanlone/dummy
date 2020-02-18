@@ -1,60 +1,36 @@
-const i18n = require("i18next");
-const XHR = require("i18next-xhr-backend");
-const LanguageDetector = require("i18next-browser-languagedetector");
+/*
+  Do not copy/paste this file. It is used internally
+  to manage end-to-end test suites.
+*/
+
+const NextI18Next = require("next-i18next").default;
+const { localeSubpaths } = require("next/config").default().publicRuntimeConfig;
 
 const options = {
-  fallbackLng: "en",
-  load: "languageOnly", // we only provide en, de -> no region specific locals like en-US, de-DE
+  localeSubpaths: true
+};
 
-  // have a common namespace used around the full app
-  ns: ["common"],
-  defaultNS: "common",
-
-  debug: false, // process.env.NODE_ENV !== 'production',
-  saveMissing: true,
-
-  interpolation: {
-    escapeValue: false, // not needed for react!!
-    formatSeparator: ",",
-    format: (value, format, lng) => {
-      if (format === "uppercase") return value.toUpperCase();
-      return value;
-    }
+const localeSubpathVariations = {
+  none: {},
+  foreign: {
+    de: "de"
+  },
+  all: {
+    en: "en",
+    de: "de"
   }
 };
 
-// for browser use xhr backend to load translations and browser lng detector
-if (process.browser) {
-  i18n
-    .use(XHR)
-    // .use(Cache)
-    .use(LanguageDetector);
-}
+module.exports = new NextI18Next({
+  defaultLanguage: "en",
+  otherLanguages: ["de"],
+  localeSubpaths: {
+    de: "de",
+    en: "en"
+  }
+});
 
-// initialize if not already initialized
-if (!i18n.isInitialized) i18n.init(options);
+// import NextI18Next from 'next-i18next'
 
-// a simple helper to getInitialProps passed on loaded i18n data
-i18n.getInitialProps = (req, namespaces) => {
-  if (!namespaces) namespaces = i18n.options.defaultNS;
-  if (typeof namespaces === "string") namespaces = [namespaces];
-
-  req.i18n.toJSON = () => null; // do not serialize i18next instance and send to client
-
-  const initialI18nStore = {};
-  req.i18n.languages.forEach(l => {
-    initialI18nStore[l] = {};
-    namespaces.forEach(ns => {
-      initialI18nStore[l][ns] =
-        (req.i18n.services.resourceStore.data[l] || {})[ns] || {};
-    });
-  });
-
-  return {
-    i18n: req.i18n, // use the instance on req - fixed language on request (avoid issues in race conditions with lngs of different users)
-    initialI18nStore,
-    initialLanguage: req.i18n.language
-  };
-};
-
-module.exports = i18n;
+// const options = new NextI18Next({ localeSubpaths: true })
+// export default new NextI18Next(options)

@@ -2,5 +2,6 @@
   "integrates_react-i18next": "Ví dụ này tích hợp  react-i18next đơn giản.",
   "pureComponent": "Bạn có thể truyền hàm t đến component con",
   "extendedComponent": "Hoặc bao các thành phần bằng react-i18next.",
-  "transComponent": "Cách khác, bạn có thể dùng <1>Trans</1> component."
+  "transComponent": "Cách khác, bạn có thể dùng <1>Trans</1> component.",
+  "testing": "testing translation in vi"
 }
