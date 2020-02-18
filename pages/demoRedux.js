@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { compose } from "redux";
 import { increment, loadData } from "../app/actions";
-import { withI18next } from "../app/lib/withI18next";
 
 export class componentName extends Component {
   Increament = () => {
@@ -11,11 +10,11 @@ export class componentName extends Component {
 
   render() {
     console.log("test", this.props);
-    const { t } = this.props;
+
     return (
       <div>
         <p>{this.props.count}</p>
-        <button onClick={this.props.load}>{t("bnt_text")}</button>
+        <button onClick={this.props.load}>button text</button>
       </div>
     );
   }
@@ -36,7 +35,4 @@ const mapDispatchToProps = dispatch => {
     }
   };
 };
-export default compose(
-  connect(mapStateToProps, mapDispatchToProps),
-  withI18next(["home"])
-)(componentName);
+export default connect(mapStateToProps, mapDispatchToProps)(componentName);

@@ -1,8 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
 import { compose } from "redux";
-import Translate from "../app/components/ComponentWithTrans";
-import { withI18next } from "../app/lib/withI18next";
 import Layout from "../app/components/Layout";
 import Head from "next/head";
 import { increment, loadData } from "../app/actions";
@@ -23,7 +21,6 @@ export class Test extends React.Component {
         </Head>
         <Layout>
           <h1>What Are You Worth?</h1>
-          <Translate translate="subTitle" />
           <br />
           {/* <Link as={`/p/day-la-bai-post`} href={`/post?title=day-la-bai-post`}>
         <a>Bai</a>
@@ -63,7 +60,8 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default compose(
-  connect(mapStateToProps, mapDispatchToProps),
-  withI18next(["home", "common"])
-)(Test);
+Test.getInitialProps = async () => ({
+  namespacesRequired: ["common"]
+});
+
+export default compose(connect(mapStateToProps, mapDispatchToProps))(Test);
