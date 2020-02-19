@@ -9,32 +9,27 @@ import Button from "../app/components/Button";
 import { withTranslation, Link, i18n } from "../i18n";
 
 
-const linkStyle = {
-  height: "500px",
-  width: "700px"
-};
-
-
 const HomePage = ({ t, load, salaryData }) => (
   <div>
     <Head>
-      <title>{t('title')}    My page title</title>
+      <title>My page title</title>
     </Head>
     <Layout>
-      <h1>What Are You Worth?</h1>
+      <h1>{t('title')}</h1>
+      <p>{t('subTitle')}</p>
       <br />
 
-      <Autocomplete placeholder="job title" />
-      <Autocomplete placeholder="location" />
-      <Button title="Find Salary" callbackHandler={load} />
+      <Autocomplete placeholder={t('common:placeholder.job_title')} />
+      <Autocomplete placeholder={t('common:placeholder.location')} />
+      <Button title={t('common:buttons.find_salary')} callbackHandler={load} />
       <br />
       <br />
-      <p>
+      {/* <p>
         {salaryData !== undefined
           ? "salaryData"
           : "test"}
       </p>
-      <p>{salaryData ? salaryData : "test2"}</p>
+      <p>{salaryData ? salaryData : "test2"}</p> */}
     </Layout>
   </div>
 )
@@ -59,7 +54,7 @@ const mapDispatchToProps = dispatch => {
 };
 
 HomePage.getInitialProps = async () => ({
-  namespacesRequired: ["home"]
+  namespacesRequired: ['home', 'common']
 });
 
-export default compose(connect(mapStateToProps, mapDispatchToProps))(withTranslation("home")(HomePage));
+export default compose(connect(mapStateToProps, mapDispatchToProps))(withTranslation(['home', 'common'])(HomePage));

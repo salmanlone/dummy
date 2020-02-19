@@ -3,7 +3,6 @@ import App from "next/app";
 import { Provider } from "react-redux";
 import withRedux from "next-redux-wrapper";
 import withReduxSaga from "next-redux-saga";
-import LanguageSwitch from "../app/components/LanguageSwitch";
 import createStore from "../app/store";
 import { appWithTranslation, i18n } from "../i18n";
 import { compose } from "redux";

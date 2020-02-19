@@ -1,6 +1,10 @@
-const Footer = () => (
+import { withTranslation } from "../../i18n";
+
+
+
+const Footer = ({ t }) => (
   <div className="findSocial">
-    <h3>Find us on social media:</h3>
+    <h3>{t('find_us_on_social_media')}</h3>
     <a
       target="_blank"
       href="https://www.facebook.com/monster"
@@ -36,4 +40,4 @@ const Footer = () => (
   </div>
 );
 
-export default Footer;
+export default withTranslation('footer')(Footer);

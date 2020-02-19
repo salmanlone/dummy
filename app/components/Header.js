@@ -4,15 +4,15 @@ const linkStyle = {
   marginRight: 15
 };
 
-const Header = () => (
+const Header = ({ t }) => (
   <div>
     <Link href="/">
-      <a style={linkStyle}>Home</a>
+      <a style={linkStyle}>{t('home')}</a>
     </Link>
     <Link href="/salary">
-      <a style={linkStyle}>Salary</a>
+      <a style={linkStyle}>{t('salary')}</a>
     </Link>
   </div>
 );
 
-export default Header;
+export default withTranslation('common')(Header);
