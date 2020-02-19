@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { compose } from "redux";
 import Layout from "../app/components/Layout";
 import Head from "next/head";
-import { increment, loadData } from "../app/actions";
+import { loadSalaryDetail } from "../app/actions";
 import Autocomplete from "../app/components/Autocomplete";
 import Button from "../app/components/Button";
 import { withTranslation, Link, i18n } from "../i18n";
@@ -32,8 +32,7 @@ const HomePage = ({ t, load, salaryData }) => (
       <p>{salaryData ? salaryData : "test2"}</p> */}
     </Layout>
   </div>
-)
-
+);
 
 const mapStateToProps = state => {
   return {
@@ -43,12 +42,8 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = dispatch => {
   return {
-    Increament: () => {
-      dispatch(increment());
-    },
     load: () => {
-      console.log("load");
-      dispatch(loadData());
+      dispatch(loadSalaryDetail());
     }
   };
 };
