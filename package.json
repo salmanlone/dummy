@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "dev": "SET NODE_ENV=development & node index.js",
+    "dev": "SET NODE_ENV=development & nodemon index.js",
     "build": "next build",
     "start": "SET NODE_ENV=production & node index.js",
     "test": "jest",
@@ -32,11 +32,12 @@
     "redux-saga": "^0.16.1"
   },
   "devDependencies": {
-    "jest": "^25.1.0",
     "@babel/core": "^7.4.0",
     "babel-jest": "^24.5.0",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.11.2",
+    "jest": "^25.1.0",
+    "nodemon": "^2.0.2",
     "react-addons-test-utils": "^15.6.2",
     "react-test-renderer": "^16.8.4"
   }
