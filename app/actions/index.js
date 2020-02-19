@@ -19,3 +19,16 @@ export function loadSalaryDetail() {
     type: actionTypes.LOAD_SALARY_DETAIL
   };
 }
+
+export function loadPositionListing() {
+  return {
+    type: actionTypes.LOAD_POSITION_LISTING
+  };
+}
+
+export function loadPositionListingSuccess(data) {
+  return {
+    type: actionTypes.POSITION_LISTING_SUCCESS,
+    data
+  };
+}

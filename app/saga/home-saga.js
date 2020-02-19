@@ -14,10 +14,10 @@ export default function* homeWatcher() {
 function* loadPositionListing() {
   try {
     const res = yield fetch(
-      "http://localhost:5009/details?channel=en-US&Occupation=Software%20Developer%20/%20Engineer&Location=Boston,%20MA"
+      "https://localhost:5008/classification?channel=en-US&jobTitle=software&JobCount=8"
     );
     const data = yield res.json();
-    yield put(loadSalarySuccess(data));
+    yield put(loadPositionListingSuccess(data));
   } catch (err) {
     yield put(failure(err));
   }
