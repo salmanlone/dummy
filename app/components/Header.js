@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { withTranslation, Link } from "../../i18n";
 
 const linkStyle = {
   marginRight: 15
