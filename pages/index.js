@@ -6,41 +6,39 @@ import Head from "next/head";
 import { increment, loadData } from "../app/actions";
 import Autocomplete from "../app/components/Autocomplete";
 import Button from "../app/components/Button";
+import { withTranslation, Link, i18n } from "../i18n";
+
 
 const linkStyle = {
   height: "500px",
   width: "700px"
 };
 
-export class Test extends React.Component {
-  render() {
-    return (
-      <div>
-        <Head>
-          <title>My page title</title>
-        </Head>
-        <Layout>
-          <h1>What Are You Worth?</h1>
-          <br />
-          {/* <Link as={`/p/day-la-bai-post`} href={`/post?title=day-la-bai-post`}>
-        <a>Bai</a>
-      </Link> */}
-          <Autocomplete placeholder="job title" />
-          <Autocomplete placeholder="location" />
-          <Button title="Find Salary" callbackHandler={this.props.load} />
-          <br />
-          <br />
-          <p>
-            {this.props.salaryData !== undefined
-              ? "this.props.salaryData"
-              : "test"}
-          </p>
-          <p>{this.props.salaryData ? this.props.salaryData : "test2"}</p>
-        </Layout>
-      </div>
-    );
-  }
-}
+
+const HomePage = ({ t, load, salaryData }) => (
+  <div>
+    <Head>
+      <title>{t('title')}    My page title</title>
+    </Head>
+    <Layout>
+      <h1>What Are You Worth?</h1>
+      <br />
+
+      <Autocomplete placeholder="job title" />
+      <Autocomplete placeholder="location" />
+      <Button title="Find Salary" callbackHandler={load} />
+      <br />
+      <br />
+      <p>
+        {salaryData !== undefined
+          ? "salaryData"
+          : "test"}
+      </p>
+      <p>{salaryData ? salaryData : "test2"}</p>
+    </Layout>
+  </div>
+)
+
 
 const mapStateToProps = state => {
   return {
@@ -60,8 +58,8 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-Test.getInitialProps = async () => ({
-  namespacesRequired: ["common"]
+HomePage.getInitialProps = async () => ({
+  namespacesRequired: ["home"]
 });
 
-export default compose(connect(mapStateToProps, mapDispatchToProps))(Test);
+export default compose(connect(mapStateToProps, mapDispatchToProps))(withTranslation("home")(HomePage));
