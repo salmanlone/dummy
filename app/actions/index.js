@@ -32,3 +32,11 @@ export function loadPositionListingSuccess(data) {
     data
   };
 }
+
+export function changeLanguage(data) {
+  return {
+    type: actionTypes.CHANGE_LANGUAGE,
+    data
+  };
+}
+

@@ -5,7 +5,7 @@ const nextI18NextMiddleware = require("next-i18next/middleware").default;
 const nextI18next = require("./i18n");
 
 const dev = process.env.NODE_ENV !== "production";
-const port = process.env.PORT || 3005;
+const port = process.env.PORT || 3000;
 const app = next({ dev });
 const handle = app.getRequestHandler();
 
@@ -25,20 +25,13 @@ const handle = app.getRequestHandler();
 
   server.get("/salary/:position/", (req, res) => {
     const actualPage = "/salary";
-    const queryParams = {
-      lang: req.params.lang,
-      position: req.params.position
-    };
+    const queryParams = { position: req.params.position};
     app.render(req, res, actualPage, queryParams);
   });
 
   server.get("/salary/:position/:location", (req, res) => {
     const actualPage = "/salary";
-    const queryParams = {
-      lang: req.params.lang,
-      position: req.params.position,
-      location: req.params.location
-    };
+    const queryParams = { position: req.params.position,location: req.params.location};
 
     //  some data we might need to use to do the checking of the routes to render the app at first time
     console.log("original Url :: ", req.headers.host);
