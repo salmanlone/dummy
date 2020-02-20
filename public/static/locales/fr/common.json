@@ -1,0 +1,14 @@
+{
+  "testing": "testing translation in Fr",
+  "welcome": "Welcome, Fr channel",
+  "home": "Accueil",
+  "salary":"Salaire",
+  "buttons":{
+    "find_salary": "Trouver un salaire"
+  },
+  "placeholder": {
+    "job_title":"Profession",
+    "location":"Emplacement"
+  },
+  "language_selection":"sélection de la langue"
+}

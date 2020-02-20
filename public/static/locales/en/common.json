@@ -1,8 +1,14 @@
 {
-  "integrates_react-i18next": "React app with Next Js for SSR, Redux for state management, saga for middleware.",
-  "pureComponent": "You can either pass t function to child components.",
-  "extendedComponent": "Or wrap your component using the translate hoc provided by react-i18next.",
-  "transComponent": "Alternatively, you can use <1>Trans</1> component.",
-  "testing123": "testing translation in deeeee",
-  "te": "testing hahah"
+  "testing": "testing translation in En",
+  "welcome": "Welcome, En channel",
+  "home": "Home",
+  "salary":"Salary",
+  "buttons":{
+    "find_salary": "Find Salary"
+  },
+  "placeholder": {
+    "job_title":"Job Title",
+    "location":"Location"
+  },
+  "language_selection":"Language Selection"
 }
