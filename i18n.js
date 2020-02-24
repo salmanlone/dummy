@@ -13,11 +13,11 @@ const options = {
 const localeSubpathVariations = {
   none: {},
   foreign: {
-    de: "de"
+    fr: "fr"
   },
   all: {
     en: "en",
-    de: "de"
+    fr: "fr"
   }
 };
 
@@ -27,6 +27,12 @@ module.exports = new NextI18Next({
   localeSubpaths: {
     fr: "fr",
     en: "en"
+  },
+  // serverLanguageDetection = false ---> will disable the cache to save in the cookies for the first load and for the other refereshes
+  serverLanguageDetection: false,
+  browserLanguageDetection: false,
+  detection: {
+    order: ['path', 'navigator']
   }
 });
 
