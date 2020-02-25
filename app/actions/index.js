@@ -39,4 +39,3 @@ export function changeLanguage(data) {
     data
   };
 }
-

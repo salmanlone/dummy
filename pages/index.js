@@ -3,25 +3,32 @@ import { connect } from "react-redux";
 import { compose } from "redux";
 import Layout from "../app/components/Layout";
 import Head from "next/head";
-import { loadSalaryDetail } from "../app/actions";
+import {
+  loadSalaryDetail,
+  loadData,
+  loadPositionListing
+} from "../app/actions";
 import Autocomplete from "../app/components/Autocomplete";
 import Button from "../app/components/Button";
 import { withTranslation, Link, i18n } from "../i18n";
 
-
-const HomePage = ({ t, load, salaryData }) => (
+const HomePage = ({ t, load, salaryData, positionListing }) => (
   <div>
     <Head>
       <title>My page title</title>
     </Head>
     <Layout>
-      <h1>{t('title')}</h1>
-      <p>{t('subTitle')}</p>
+      <h1>{t("title")}</h1>
+      <p>{t("subTitle")}</p>
       <br />
 
-      <Autocomplete placeholder={t('common:placeholder.job_title')} />
-      <Autocomplete placeholder={t('common:placeholder.location')} />
-      <Button title={t('common:buttons.find_salary')} callbackHandler={load} />
+      <Autocomplete placeholder={t("common:placeholder.job_title")} />
+      <Autocomplete placeholder={t("common:placeholder.location")} />
+      <Button title={t("common:buttons.find_salary")} callbackHandler={load} />
+      <Button
+        title={t("common:buttons.find_salary")}
+        callbackHandler={positionListing}
+      />
       <br />
       <br />
       {/* <p>
@@ -44,12 +51,17 @@ const mapDispatchToProps = dispatch => {
   return {
     load: () => {
       dispatch(loadSalaryDetail());
+    },
+    positionListing: () => {
+      dispatch(loadPositionListing());
     }
   };
 };
 
 HomePage.getInitialProps = async () => ({
-  namespacesRequired: ['home', 'common']
+  namespacesRequired: ["home", "common"]
 });
 
-export default compose(connect(mapStateToProps, mapDispatchToProps))(withTranslation(['home', 'common'])(HomePage));
+export default compose(connect(mapStateToProps, mapDispatchToProps))(
+  withTranslation(["home", "common"])(HomePage)
+);

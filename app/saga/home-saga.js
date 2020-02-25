@@ -2,12 +2,14 @@ import { failure, loadPositionListingSuccess } from "../actions";
 import actionTypes from "../actions/action-type";
 import es6promise from "es6-promise";
 import "isomorphic-unfetch";
-import { put, takeLatest } from "redux-saga/effects";
+import { all, call, delay, put, takeLatest } from "redux-saga/effects";
 
 es6promise.polyfill();
 
-export default function* homeWatcher() {
-  yield [takeLatest(actionTypes.LOAD_POSITION_LISTING, loadPositionListing)];
+export default function* rootHomeSaga() {
+  yield all([
+    takeLatest(actionTypes.LOAD_POSITION_LISTING, loadPositionListing)
+  ]);
 }
 
 function* loadPositionListing() {
