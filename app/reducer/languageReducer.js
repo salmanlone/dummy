@@ -11,7 +11,7 @@ const languageReducer = (state = initState, action) => {
         case actionTypes.CHANGE_LANGUAGE:
             return {
                 ...state,
-                ...{ language: action.data.target.value }
+                ...{ language: action.data}
             };
         default:
             return state;

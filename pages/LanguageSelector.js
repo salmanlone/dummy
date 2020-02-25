@@ -3,21 +3,25 @@ import { withTranslation, i18n } from "../i18n";
 import { connect } from 'react-redux';
 import { changeLanguage } from "../app/actions";
 
-const LanguageSelector = ({ t, lang, changeLanguage }) => {
+
+
+function changeLang(event) {
+  i18n.changeLanguage(event.target.value);
+}
+
+
+const LanguageSelector = ({ t, lang, changeLanguage, pathname }) => {
 
   const [language, setLanguage] = useState(lang);
-
-  console.log('18 :: ',i18n)
-
+  const currentlang = i18n.language;
   useEffect(() => {
-    setLanguage(language => lang)
-    i18n.changeLanguage(lang);
+    setLanguage(currentlang);
   }, [lang])
 
   return (
     <div>
       <label>{t('language_selection')} </label>
-      <select onChange={changeLanguage} value={lang}>
+      <select onChange={e => { changeLanguage(e), changeLang(e) }} value={currentlang}>
         <option value="en">En</option>
         <option value="fr">Fr</option>
       </select>
@@ -26,8 +30,6 @@ const LanguageSelector = ({ t, lang, changeLanguage }) => {
   )
 };
 
-
-//         <input type="text" onChange={(event)=> searchQuery(event.target.value)} placeholder="Search for items or sellers" />
 
 const mapStateToProps = state => {
   return {
@@ -38,8 +40,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     changeLanguage: (data) => {
-      dispatch(changeLanguage(data));
-
+      dispatch(changeLanguage(data.target.value));
     },
   };
 };
