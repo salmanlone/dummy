@@ -4,11 +4,11 @@
 */
 
 const NextI18Next = require("next-i18next").default;
-const { localeSubpaths } = require("next/config").default().publicRuntimeConfig;
+// const { localeSubpaths } = require("next/config").default().publicRuntimeConfig;
 
-const options = {
-  localeSubpaths: true
-};
+// const options = {
+//   localeSubpaths: true
+// };
 
 // const localeSubpathVariations = {
 //   none: {},
@@ -33,7 +33,7 @@ module.exports = new NextI18Next({
   serverLanguageDetection: false,
   browserLanguageDetection: false,
   detection: {
-    order: ['path', 'navigator']
+    order: ['querystring', 'cookie', 'path', 'navigator']
   }
 });
 
