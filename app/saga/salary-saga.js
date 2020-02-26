@@ -2,13 +2,12 @@ import { failure, loadSalarySuccess } from "../actions";
 import actionTypes from "../actions/action-type";
 import es6promise from "es6-promise";
 import "isomorphic-unfetch";
-import { takeLatest } from "redux-saga";
-import { put } from "redux-saga/effects";
+import { all, call, delay, put, takeLatest } from "redux-saga/effects";
 
 es6promise.polyfill();
 
 export default function* salaryDetailWatcher() {
-  yield [takeLatest(actionTypes.LOAD_SALARY_DETAIL, loadSalaryDetail)];
+  yield all([takeLatest(actionTypes.LOAD_SALARY_DETAIL, loadSalaryDetail)]);
 }
 
 function* loadSalaryDetail() {

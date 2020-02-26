@@ -9,7 +9,7 @@ import { compose } from "redux";
 
 class MyApp extends App {
 
-  // changes for IIS
+  //  // changes for IIS
   // static async getInitialProps(props) {
   //   const { ctx } = props;
   //   const { req, res } = ctx;
@@ -52,7 +52,6 @@ class MyApp extends App {
   //   return { ...appProps };
   // }
 
-
   // using the browser URL, then we change the language according to global.window.location
   // componentDidMount() {
   //     console.log('URL Origin :: ', global.window.origin);
@@ -90,7 +89,5 @@ class MyApp extends App {
     );
   }
 }
-export default compose(
-  withRedux(createStore),
-  withReduxSaga({ async: true })
-)(appWithTranslation(MyApp));
+
+export default withRedux(createStore)(withReduxSaga(appWithTranslation(MyApp)));
