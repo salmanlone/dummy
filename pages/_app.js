@@ -66,17 +66,16 @@ class MyApp extends App {
   //   } else i18n.changeLanguage("en");
   // }
 
-  // // testing on get initial props
-  // static async getInitialProps(Component, ctx) {
-  //   let namespacesRequired = ["common"];
-  //   let pageProps = {};
-  //   console.log('current lang :: ', currentLanguage);
-  //   if (Component.getInitialProps) {
-  //     pageProps = (await Component.getInitialProps(ctx))
-  //       || {}
-  //   }
-  //   return { pageProps, namespacesRequired }
-  // }
+  // testing on get initial props
+  static async getInitialProps(Component, ctx) {
+    let namespacesRequired = ["common"];
+    let pageProps = {};
+    if (Component.getInitialProps) {
+      pageProps = (await Component.getInitialProps(ctx))
+        || {}
+    }
+    return { pageProps, namespacesRequired }
+  }
 
   render() {
     const { Component, pageProps, store, router } = this.props;

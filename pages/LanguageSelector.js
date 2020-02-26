@@ -24,6 +24,8 @@ const LanguageSelector = ({ t, lang, changeLanguage, pathname }) => {
       <select onChange={e => { changeLanguage(e), changeLang(e) }} value={currentlang}>
         <option value="en">En</option>
         <option value="fr">Fr</option>
+        <option value="de">de</option>
+
       </select>
       <br />
     </div>
@@ -44,5 +46,9 @@ const mapDispatchToProps = dispatch => {
     },
   };
 };
+
+LanguageSelector.getInitialProps = async () => ({
+  namespacesRequired: ["common"]
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(withTranslation('common')(LanguageSelector));
