@@ -10,16 +10,16 @@ const options = {
   localeSubpaths: true
 };
 
-const localeSubpathVariations = {
-  none: {},
-  foreign: {
-    fr: "fr"
-  },
-  all: {
-    en: "en",
-    fr: "fr"
-  }
-};
+// const localeSubpathVariations = {
+//   none: {},
+//   foreign: {
+//     fr: "fr"
+//   },
+//   all: {
+//     en: "en",
+//     fr: "fr"
+//   }
+// };
 
 module.exports = new NextI18Next({
   defaultLanguage: "en",
