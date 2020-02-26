@@ -1,0 +1,14 @@
+{
+  "testing": "testing translation in De",
+  "welcome": "Welcome, Dr channel",
+  "home": "Zuhause",
+  "salary":"Gehalt",
+  "buttons":{
+    "find_salary": "Gehalt finden"
+  },
+  "placeholder": {
+    "job_title":"Berufsbezeichnung",
+    "location":"Ort"
+  },
+  "language_selection":"Sprachauswahl"
+}
