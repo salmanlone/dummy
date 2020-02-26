@@ -4,22 +4,6 @@
 */
 
 const NextI18Next = require("next-i18next").default;
-const { localeSubpaths } = require("next/config").default().publicRuntimeConfig;
-
-const options = {
-  localeSubpaths: true
-};
-
-const localeSubpathVariations = {
-  none: {},
-  foreign: {
-    fr: "fr"
-  },
-  all: {
-    en: "en",
-    fr: "fr"
-  }
-};
 
 module.exports = new NextI18Next({
   defaultLanguage: "en",
@@ -35,8 +19,3 @@ module.exports = new NextI18Next({
     order: ['path', 'navigator']
   }
 });
-
-// import NextI18Next from 'next-i18next'
-
-// const options = new NextI18Next({ localeSubpaths: true })
-// export default new NextI18Next(options)
