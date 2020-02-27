@@ -12,34 +12,39 @@ import Autocomplete from "../app/components/Autocomplete";
 import Button from "../app/components/Button";
 import { withTranslation, Link, i18n } from "../i18n";
 
-const HomePage = ({ t, load, salaryData, positionListing }) => (
-  <div>
-    <Head>
-      <title>My page title</title>
-    </Head>
-    <Layout>
-      <h1>{t("title")}</h1>
-      <p>{t("subTitle")}</p>
-      <br />
 
-      <Autocomplete placeholder={t("common:placeholder.job_title")} />
-      <Autocomplete placeholder={t("common:placeholder.location")} />
-      <Button title={t("common:buttons.find_salary")} callbackHandler={load} />
-      <Button
-        title={t("common:buttons.find_salary")}
-        callbackHandler={positionListing}
-      />
-      <br />
-      <br />
-      {/* <p>
+
+const HomePage = ({ t, load, salaryData, positionListing }) => {
+
+
+  return (
+    <div>
+      <Head>
+        <title>My page title</title>
+      </Head>
+      <Layout>
+        <h1>{t("title")}</h1>
+        <p>{t("subTitle")}</p>
+        <br />
+        <Autocomplete placeholder={t("common:placeholder.job_title")} />
+        <Autocomplete placeholder={t("common:placeholder.location")} />
+        <Button title={t("common:buttons.find_salary")} callbackHandler={load} goToLink="/salary" />
+        {/* <Button title={t("common:buttons.find_salary")} callbackHandler={positionListing} goTo="/salary"     /> */}
+        <br />
+        <br />
+        {/* <p>
         {salaryData !== undefined
           ? "salaryData"
           : "test"}
       </p>
       <p>{salaryData ? salaryData : "test2"}</p> */}
-    </Layout>
-  </div>
-);
+      </Layout>
+    </div>
+  )
+};
+
+
+
 
 const mapStateToProps = state => {
   return {
