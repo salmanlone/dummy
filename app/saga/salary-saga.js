@@ -1,4 +1,4 @@
-import { failure, loadSalarySuccess } from "../actions";
+import { failure, loadSalarySuccess } from "../actions/salaryDetail";
 import actionTypes from "../actions/action-type";
 import es6promise from "es6-promise";
 import "isomorphic-unfetch";
