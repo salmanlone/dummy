@@ -1,4 +1,4 @@
-import actionTypes from "./action-type";
+import actionTypes from "../action-type";
 
 export function failure(error) {
   return {

@@ -3,14 +3,12 @@ import { connect } from "react-redux";
 import { compose } from "redux";
 import Layout from "../app/components/Layout";
 import Head from "next/head";
-import {
-  loadSalaryDetail,
-  loadData,
-  loadPositionListing
-} from "../app/actions";
 import Autocomplete from "../app/components/Autocomplete";
 import Button from "../app/components/Button";
 import { withTranslation, Link, i18n } from "../i18n";
+
+import { loadSalaryDetail } from "../app/actions/salaryDetail";
+import { loadPositionListing } from "../app/actions/home";
 
 const HomePage = ({ t, load, salaryData, positionListing }) => (
   <div>
