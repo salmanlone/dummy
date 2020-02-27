@@ -2,13 +2,20 @@
   "testing": "testing translation in Fr",
   "welcome": "Welcome, Fr channel",
   "home": "Accueil",
-  "salary":"Salaire",
-  "buttons":{
+  "salary": "Salaire",
+  "buttons": {
     "find_salary": "Trouver un salaire"
   },
   "placeholder": {
-    "job_title":"Profession",
-    "location":"Emplacement"
+    "job_title": "Profession",
+    "location": "Emplacement"
   },
-  "language_selection":"sélection de la langue"
+  "language_selection": "sélection de la langue",
+  "links": {
+    "find_jobs": "Trouver des emplois",
+    "upload_resume": "Télécharger le CV",
+    "salary_tool": "Outils Salariaux",
+    "resume_help": "Aide CV",
+    "career_advice": "Conseil de Carrière"
+  }
 }

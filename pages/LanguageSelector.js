@@ -4,14 +4,17 @@ import { connect } from 'react-redux';
 import { changeLanguage } from "../app/actions";
 
 
+const LangSelectorStyle = {
+  padding: "10px",
+  backgroundColor: "#dddddd",
+  display: "inline"
+}
 
 function changeLang(event) {
   i18n.changeLanguage(event.target.value);
 }
 
-
 const LanguageSelector = ({ t, lang, changeLanguage, pathname }) => {
-
   const [language, setLanguage] = useState(lang);
   const currentlang = i18n.language;
   useEffect(() => {
@@ -19,8 +22,8 @@ const LanguageSelector = ({ t, lang, changeLanguage, pathname }) => {
   }, [lang])
 
   return (
-    <div>
-      <label>{t('language_selection')} </label>
+    <div style={LangSelectorStyle}>
+      <label><b>{t('language_selection')}</b> </label>
       <select onChange={e => { changeLanguage(e), changeLang(e) }} value={currentlang}>
         <option value="en">En</option>
         <option value="fr">Fr</option>

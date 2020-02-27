@@ -2,13 +2,20 @@
   "testing": "testing translation in En",
   "welcome": "Welcome, En channel",
   "home": "Home",
-  "salary":"Salary",
-  "buttons":{
+  "salary": "Salary",
+  "buttons": {
     "find_salary": "Find Salary"
   },
   "placeholder": {
-    "job_title":"Job Title",
-    "location":"Location"
+    "job_title": "Job Title",
+    "location": "Location"
   },
-  "language_selection":"Language Selection"
+  "language_selection": "Language Selection",
+  "links": {
+    "find_jobs": "Find Jobs",
+    "upload_resume": "Upload Resume",
+    "salary_tool": " Salary Tools",
+    "resume_help": "Resume Help",
+    "career_advice": "Career Advice"
+  }
 }

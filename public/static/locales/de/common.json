@@ -2,13 +2,20 @@
   "testing": "testing translation in De",
   "welcome": "Welcome, Dr channel",
   "home": "Zuhause",
-  "salary":"Gehalt",
-  "buttons":{
+  "salary": "Gehalt",
+  "buttons": {
     "find_salary": "Gehalt finden"
   },
   "placeholder": {
-    "job_title":"Berufsbezeichnung",
-    "location":"Ort"
+    "job_title": "Berufsbezeichnung",
+    "location": "Ort"
   },
-  "language_selection":"Sprachauswahl"
+  "language_selection": "Sprachauswahl",
+  "links": {
+    "find_jobs": "Find Jobs",
+    "upload_resume": "Upload Resume",
+    "salary_tool": " Salary Tools",
+    "resume_help": "Resume Help",
+    "career_advice": "Career Advice"
+  }
 }
