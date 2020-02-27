@@ -19,18 +19,16 @@ describe("homeReducer", () => {
   });
 
   it("should handle the positions listing response action correctly", () => {
-    const positionsListing = {
-      positions: [
-        "Software Developer / Engineer",
-        "Software Architect",
-        "Embedded Software Engineer",
-        "Senior Software Developer / Engineer",
-        "Software Development / Engineering Manager",
-        "Senior Java Developer / Engineer",
-        "JavaScript Developer / Engineer",
-        "Android Developer / Engineer"
-      ]
-    };
+    const positionsListing = [
+      "Software Developer / Engineer",
+      "Software Architect",
+      "Embedded Software Engineer",
+      "Senior Software Developer / Engineer",
+      "Software Development / Engineering Manager",
+      "Senior Java Developer / Engineer",
+      "JavaScript Developer / Engineer",
+      "Android Developer / Engineer"
+    ];
     const expectedResult = produce(state, draft => {
       draft.positions = positionsListing;
     });
