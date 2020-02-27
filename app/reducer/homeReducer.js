@@ -10,7 +10,7 @@ const homeReducer = (state = initState, action) => {
     case actionTypes.POSITION_LISTING_SUCCESS:
       return {
         ...state,
-        ...{ salaryData: action.data }
+        ...{ positions: action.data }
       };
     default:
       return state;
