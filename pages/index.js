@@ -3,44 +3,41 @@ import { connect } from "react-redux";
 import { compose } from "redux";
 import Layout from "../app/components/Layout";
 import Head from "next/head";
-import { increment, loadData } from "../app/actions";
 import Autocomplete from "../app/components/Autocomplete";
 import Button from "../app/components/Button";
+import { withTranslation, Link, i18n } from "../i18n";
 
-const linkStyle = {
-  height: "500px",
-  width: "700px"
-};
+import { loadSalaryDetail } from "../app/actions/salaryDetail";
+import { loadPositionListing } from "../app/actions/home";
 
-export class Test extends React.Component {
-  render() {
-    return (
-      <div>
-        <Head>
-          <title>My page title</title>
-        </Head>
-        <Layout>
-          <h1>What Are You Worth?</h1>
-          <br />
-          {/* <Link as={`/p/day-la-bai-post`} href={`/post?title=day-la-bai-post`}>
-        <a>Bai</a>
-      </Link> */}
-          <Autocomplete placeholder="job title" />
-          <Autocomplete placeholder="location" />
-          <Button title="Find Salary" callbackHandler={this.props.load} />
-          <br />
-          <br />
-          <p>
-            {this.props.salaryData !== undefined
-              ? "this.props.salaryData"
-              : "test"}
-          </p>
-          <p>{this.props.salaryData ? this.props.salaryData : "test2"}</p>
-        </Layout>
-      </div>
-    );
-  }
-}
+const HomePage = ({ t, load, salaryData, positionListing }) => (
+  <div>
+    <Head>
+      <title>My page title</title>
+    </Head>
+    <Layout>
+      <h1>{t("title")}</h1>
+      <p>{t("subTitle")}</p>
+      <br />
+
+      <Autocomplete placeholder={t("common:placeholder.job_title")} />
+      <Autocomplete placeholder={t("common:placeholder.location")} />
+      <Button title={t("common:buttons.find_salary")} callbackHandler={load} />
+      <Button
+        title={t("common:buttons.find_salary")}
+        callbackHandler={positionListing}
+      />
+      <br />
+      <br />
+      {/* <p>
+        {salaryData !== undefined
+          ? "salaryData"
+          : "test"}
+      </p>
+      <p>{salaryData ? salaryData : "test2"}</p> */}
+    </Layout>
+  </div>
+);
 
 const mapStateToProps = state => {
   return {
@@ -50,18 +47,19 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = dispatch => {
   return {
-    Increament: () => {
-      dispatch(increment());
-    },
     load: () => {
-      console.log("load");
-      dispatch(loadData());
+      dispatch(loadSalaryDetail());
+    },
+    positionListing: () => {
+      dispatch(loadPositionListing());
     }
   };
 };
 
-Test.getInitialProps = async () => ({
-  namespacesRequired: ["common"]
+HomePage.getInitialProps = async () => ({
+  namespacesRequired: ["home", "common"]
 });
 
-export default compose(connect(mapStateToProps, mapDispatchToProps))(Test);
+export default compose(connect(mapStateToProps, mapDispatchToProps))(
+  withTranslation(["home", "common"])(HomePage)
+);

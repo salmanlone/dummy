@@ -5,9 +5,27 @@ const nextI18NextMiddleware = require("next-i18next/middleware").default;
 const nextI18next = require("./i18n");
 
 const dev = process.env.NODE_ENV !== "production";
-const port = process.env.PORT || 3005;
+const port = process.env.PORT || 3000;
 const app = next({ dev });
 const handle = app.getRequestHandler();
+
+const getLangFromDomain = (request) => {
+  let domainList = [
+    ["www.monster.com", "en"],
+    ["www.monster.ca", "en"],
+    ["www.monster.de", "de"],
+    ["www.monster.fr", "fr"]
+  ]
+  if (request.headers["foobar-url"]) {
+    const foobar = request.headers["foobar-url"]
+    for (let i = 0; i < domainList.length; i++) {
+      if (foobar.includes(domainList[i][0])) {
+        return domainList[i][1]
+      }
+    }
+  }
+  return ""
+}
 
 (async () => {
   await app.prepare();
@@ -19,26 +37,30 @@ const handle = app.getRequestHandler();
   //  Custom Routes for the salary application
 
   server.get("/", (req, res) => {
+    let language = getLangFromDomain(req);
+    if (language != "") {
+      req.i18n.changeLanguage(language)
+    }
+
     const actualPage = "/";
+    app.render(req, res, actualPage);
+  });
+
+  server.get("/testlang/:lang", (req, res) => {
+    const actualPage = "/";
+    req.i18n.changeLanguage(req.params.lang)
     app.render(req, res, actualPage);
   });
 
   server.get("/salary/:position/", (req, res) => {
     const actualPage = "/salary";
-    const queryParams = {
-      lang: req.params.lang,
-      position: req.params.position
-    };
+    const queryParams = { position: req.params.position };
     app.render(req, res, actualPage, queryParams);
   });
 
   server.get("/salary/:position/:location", (req, res) => {
     const actualPage = "/salary";
-    const queryParams = {
-      lang: req.params.lang,
-      position: req.params.position,
-      location: req.params.location
-    };
+    const queryParams = { position: req.params.position, location: req.params.location };
 
     //  some data we might need to use to do the checking of the routes to render the app at first time
     console.log("original Url :: ", req.headers.host);

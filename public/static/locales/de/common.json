@@ -1,8 +1,21 @@
 {
-  "integrates_react-i18next": "Dieses Beispiel integriert react-i18next für einfache Übersetzung.",
-  "pureComponent": "Entweder t Funktion an Komponente via props weiterreichen.",
-  "extendedComponent": "Oder die Komponente erneut mit dem translate hoc erweiteren.",
-  "transComponent": "Sonst können Sie auch die Komponente <1>Trans</1> verwenden.",
-  "testing123": "testing translation in de",
-  "te": "sadfd"
+  "testing": "testing translation in De",
+  "welcome": "Welcome, Dr channel",
+  "home": "Zuhause",
+  "salary": "Gehalt",
+  "buttons": {
+    "find_salary": "Gehalt finden"
+  },
+  "placeholder": {
+    "job_title": "Berufsbezeichnung",
+    "location": "Ort"
+  },
+  "language_selection": "Sprachauswahl",
+  "links": {
+    "find_jobs": "Find Jobs",
+    "upload_resume": "Upload Resume",
+    "salary_tool": " Salary Tools",
+    "resume_help": "Resume Help",
+    "career_advice": "Career Advice"
+  }
 }

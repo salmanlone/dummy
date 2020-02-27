@@ -1,7 +1,7 @@
-// const callbackHandler = props => {
-//   console.log(props);
-//   props.callbackHandler();
-// };
+const callbackHandler = props => {
+  console.log(props);
+  props.callbackHandler();
+};
 
 const Button = props => (
   <button title={props.title} onClick={props.callbackHandler}>
