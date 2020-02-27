@@ -3,6 +3,12 @@ import { withTranslation, i18n } from "../i18n";
 import { connect } from "react-redux";
 import { changeLanguage } from "../app/actions/language";
 
+const LangSelectorStyle = {
+  padding: "10px",
+  backgroundColor: "#dddddd",
+  display: "inline"
+};
+
 function changeLang(event) {
   i18n.changeLanguage(event.target.value);
 }
@@ -15,8 +21,10 @@ const LanguageSelector = ({ t, lang, changeLanguage, pathname }) => {
   }, [lang]);
 
   return (
-    <div>
-      <label>{t("language_selection")} </label>
+    <div style={LangSelectorStyle}>
+      <label>
+        <b>{t("language_selection")}</b>{" "}
+      </label>
       <select
         onChange={e => {
           changeLanguage(e), changeLang(e);
