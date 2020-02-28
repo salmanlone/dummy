@@ -7,12 +7,10 @@ import Autocomplete from "../app/components/Autocomplete";
 import Button from "../app/components/Button";
 import { withTranslation, Link, i18n } from "../i18n";
 
-import { loadSalaryDetail } from "../app/actions/salaryDetail";
+import { getSalaryDetail } from "../app/actions/salaryDetail";
 import { loadPositionListing } from "../app/actions/home";
 
-
-const HomePage = ({ t, load, salaryData, positionListing }) => {
-
+const HomePage = ({ t, salaryDetail }) => {
   return (
     <div>
       <Head>
@@ -24,7 +22,11 @@ const HomePage = ({ t, load, salaryData, positionListing }) => {
         <br />
         <Autocomplete placeholder={t("common:placeholder.job_title")} />
         <Autocomplete placeholder={t("common:placeholder.location")} />
-        <Button title={t("common:buttons.find_salary")} callbackHandler={load} goToLink="/salary" />
+        <Button
+          title={t("common:buttons.find_salary")}
+          callbackHandler={salaryDetail}
+          goToLink="/salary"
+        />
         {/* <Button title={t("common:buttons.find_salary")} callbackHandler={positionListing} goTo="/salary"     /> */}
         <br />
         <br />
@@ -36,9 +38,8 @@ const HomePage = ({ t, load, salaryData, positionListing }) => {
       <p>{salaryData ? salaryData : "test2"}</p> */}
       </Layout>
     </div>
-  )
+  );
 };
-
 
 const mapStateToProps = state => {
   return {
@@ -48,8 +49,8 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = dispatch => {
   return {
-    load: () => {
-      dispatch(loadSalaryDetail());
+    salaryDetail: () => {
+      dispatch(getSalaryDetail());
     },
     positionListing: () => {
       dispatch(loadPositionListing());

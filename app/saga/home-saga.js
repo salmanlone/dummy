@@ -12,7 +12,7 @@ export default function* rootHomeSaga() {
   ]);
 }
 
-function* loadPositionListing() {
+export function* loadPositionListing() {
   try {
     const res = yield fetch(
       "https://localhost:5008/classification?channel=en-US&jobTitle=software&JobCount=8"

@@ -1,21 +1,19 @@
 import actionTypes from "../actions/action-type";
 
-
 const initState = {
-    language: ""
+  language: ""
 };
 
-
 const languageReducer = (state = initState, action) => {
-    switch (action.type) {
-        case actionTypes.CHANGE_LANGUAGE:
-            return {
-                ...state,
-                ...{ language: action.data}
-            };
-        default:
-            return state;
-    }
+  switch (action.type) {
+    case actionTypes.CHANGE_LANGUAGE:
+      return {
+        ...state,
+        ...{ language: action.data }
+      };
+    default:
+      return state;
+  }
 };
 
 export default languageReducer;
