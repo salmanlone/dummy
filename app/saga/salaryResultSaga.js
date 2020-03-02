@@ -1,4 +1,4 @@
-import { failure, loadSalaryDetailSuccess } from "../actions/salaryDetail";
+import { failure, loadSalaryResultSuccess } from "../actions/salaryResult";
 import actionTypes from "../actions/action-type";
 import es6promise from "es6-promise";
 import "isomorphic-unfetch";
@@ -16,9 +16,8 @@ function* getSalaryDetail() {
       "http://localhost:5009/details?channel=en-US&Occupation=Software%20Developer%20/%20Engineer&Location=Boston,%20MA"
     );
     const data = yield res.json();
-    yield put(loadSalaryDetailSuccess(data));
+    yield put(loadSalaryResultSuccess(data));
   } catch (err) {
     yield put(failure(err));
   }
 }
-  
