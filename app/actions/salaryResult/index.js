@@ -7,14 +7,14 @@ export function failure(error) {
   };
 }
 
-export function loadSalaryDetailSuccess(data) {
+export function loadSalaryResultSuccess(data) {
   return {
     type: actionTypes.LOAD_SALARY_SUCCESS,
     data
   };
 }
 
-export function getSalaryDetail() {
+export function getSalaryResult() {
   return {
     type: actionTypes.LOAD_SALARY_DETAIL
   };
