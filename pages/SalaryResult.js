@@ -8,6 +8,7 @@ import salaryDummyData from '../app/dummyData/SalaryDetailDummy';
 import BreadCrumb from '../app/components/DumbComponents/Breadcrumb';
 
 import Card from '../app/components/SmartComponents/Card';
+import SalaryGraph from '../app/components/SmartComponents/SalaryGraph';
 
 const myStyle = {
   border: "1px solid"
@@ -18,6 +19,10 @@ const SalaryResult = ({ t }) => (
     <Layout>
       <p> {t("testing")}</p>
       <BreadCrumb />
+      <SalaryGraph
+        style={myStyle}
+        salary={salaryDummyData}
+      />
       <div>
         <Card
           style={myStyle}
