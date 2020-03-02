@@ -8,9 +8,9 @@ import Button from "../app/components/DumbComponents/Button";
 import { withTranslation, Link, i18n } from "../i18n";
 
 import { getSalaryDetail } from "../app/actions/salaryDetail";
-import { loadPositionListing } from "../app/actions/salary";
+import { loadPositionListing } from "../app/actions/home";
 
-const Salary = ({ t, salaryDetail }) => {
+const HomePage = ({ t, salaryDetail }) => {
   return (
     <div>
       <Head>
@@ -25,7 +25,7 @@ const Salary = ({ t, salaryDetail }) => {
         <Button
           title={t("common:buttons.find_salary")}
           callbackHandler={salaryDetail}
-          goToLink="/SalaryResult"
+          goToLink="/salary"
         />
         {/* <Button title={t("common:buttons.find_salary")} callbackHandler={positionListing} goTo="/salary"     /> */}
         <br />
@@ -58,10 +58,10 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-Salary.getInitialProps = async () => ({
-  namespacesRequired: ["salary", "common"]
+HomePage.getInitialProps = async () => ({
+  namespacesRequired: ["home", "common"]
 });
 
 export default compose(connect(mapStateToProps, mapDispatchToProps))(
-  withTranslation(["salary", "common"])(Salary)
+  withTranslation(["home", "common"])(HomePage)
 );

@@ -1,5 +1,5 @@
 import React from "react";
-import Layout from "../app/components/Layout";
+import Layout from "../app/components/DumbComponents/Layout";
 import { withTranslation, Link, i18n } from "../i18n";
 import { Trans } from "react-i18next";
 

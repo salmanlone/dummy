@@ -1,4 +1,4 @@
-import { withTranslation, Link } from "../../i18n";
+import { withTranslation, Link } from "../../../i18n";
 
 const linkStyle = {
   textDecoration: "none",
