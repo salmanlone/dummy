@@ -1,9 +1,9 @@
 import produce from "immer";
 
-import homeReducer from "../../app/reducer/homeReducer";
-import { loadPositionListingSuccess } from "../../app/actions/salaryDetail";
+import salaryReducer from "../../app/reducer/salaryReducer";
+import { loadPositionListingSuccess } from "../../app/actions/salary";
 
-describe("homeReducer", () => {
+describe("salaryReducer", () => {
   let state;
 
   beforeEach(() => {
@@ -15,7 +15,7 @@ describe("homeReducer", () => {
 
   it("should return the initial state", () => {
     const expectedResult = state;
-    expect(homeReducer(undefined, {})).toEqual(expectedResult);
+    expect(salaryReducer(undefined, {})).toEqual(expectedResult);
   });
 
   it("should handle the positions listing response action correctly", () => {
@@ -34,7 +34,7 @@ describe("homeReducer", () => {
     });
 
     expect(
-      homeReducer(state, loadPositionListingSuccess(positionsListing))
+      salaryReducer(state, loadPositionListingSuccess(positionsListing))
     ).toEqual(expectedResult);
   });
 });

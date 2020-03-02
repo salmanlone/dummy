@@ -7,10 +7,10 @@ import Autocomplete from "../app/components/Autocomplete";
 import Button from "../app/components/Button";
 import { withTranslation, Link, i18n } from "../i18n";
 
-import { getSalaryDetail } from "../app/actions/salaryDetail";
+import { getSalaryDetail } from "../app/actions/salaryResult";
 import { loadPositionListing } from "../app/actions/salary";
 
-const Salary = ({ t, salaryDetail }) => {
+const Salary = ({ t, salaryResult }) => {
   return (
     <div>
       <Head>
@@ -24,7 +24,7 @@ const Salary = ({ t, salaryDetail }) => {
         <Autocomplete placeholder={t("common:placeholder.location")} />
         <Button
           title={t("common:buttons.find_salary")}
-          callbackHandler={salaryDetail}
+          callbackHandler={salaryResult}
           goToLink="/SalaryResult"
         />
         {/* <Button title={t("common:buttons.find_salary")} callbackHandler={positionListing} goTo="/salary"     /> */}
@@ -49,8 +49,8 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = dispatch => {
   return {
-    salaryDetail: () => {
-      dispatch(getSalaryDetail());
+    salaryResult: () => {
+      dispatch(getSalaryResult());
     },
     positionListing: () => {
       dispatch(loadPositionListing());
