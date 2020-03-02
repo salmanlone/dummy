@@ -15,7 +15,7 @@ const SalaryResult = ({ t }) => (
 );
 
 SalaryResult.getInitialProps = async () => ({
-  namespacesRequired: ["common"]
+  namespacesRequired: ["salaryResult", "common"]
 });
 
-export default withTranslation("common")(SalaryResult);
+export default withTranslation(["salaryResult", "common"])(SalaryResult);
