@@ -1,25 +1,67 @@
 import React from "react";
+import { connect } from "react-redux";
+import { compose } from "redux";
 import Layout from "../app/components/Layout";
+import Head from "next/head";
+import Autocomplete from "../app/components/Autocomplete";
+import Button from "../app/components/Button";
 import { withTranslation, Link, i18n } from "../i18n";
-import { Trans } from 'react-i18next';
 
+import { getSalaryDetail } from "../app/actions/salaryDetail";
+import { loadPositionListing } from "../app/actions/salary";
 
+const Salary = ({ t, salaryDetail }) => {
+  return (
+    <div>
+      <Head>
+        <title>My page title</title>
+      </Head>
+      <Layout>
+        <h1>{t("title")}</h1>
+        <p>{t("subTitle")}</p>
+        <br />
+        <Autocomplete placeholder={t("common:placeholder.job_title")} />
+        <Autocomplete placeholder={t("common:placeholder.location")} />
+        <Button
+          title={t("common:buttons.find_salary")}
+          callbackHandler={salaryDetail}
+          goToLink="/SalaryResult"
+        />
+        {/* <Button title={t("common:buttons.find_salary")} callbackHandler={positionListing} goTo="/salary"     /> */}
+        <br />
+        <br />
+        {/* <p>
+        {salaryData !== undefined
+          ? "salaryData"
+          : "test"}
+      </p>
+      <p>{salaryData ? salaryData : "test2"}</p> */}
+      </Layout>
+    </div>
+  );
+};
 
-
-
-const Salary = ({ t }) => (
-  <div>
-    <Layout>
-      <p> {t("testing")}</p>
-      <Trans i18nKey="welcome"><b> ismaiel </b> Welcome</Trans>
-
-
-    </Layout>
-  </div>
-);
+const mapStateToProps = state => {
+  return {
+    count: state.count,
+    salaryData: state.salaryData
+  };
+};
+const mapDispatchToProps = dispatch => {
+  return {
+    salaryDetail: () => {
+      dispatch(getSalaryDetail());
+    },
+    positionListing: () => {
+      dispatch(loadPositionListing());
+    }
+  };
+};
 
 Salary.getInitialProps = async () => ({
-  namespacesRequired: ["common"]
+  namespacesRequired: ["salary", "common"]
 });
 
-export default withTranslation("common")(Salary);
+export default compose(connect(mapStateToProps, mapDispatchToProps))(
+  withTranslation(["salary", "common"])(Salary)
+);

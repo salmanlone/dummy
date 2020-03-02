@@ -1,19 +1,20 @@
 import actionTypes from "../actions/action-type";
 
 const initState = {
-  salaryDetails: []
+  position: "",
+  location: ""
 };
 
-const salaryReducer = (state = initState, action) => {
+const homeReducer = (state = initState, action) => {
   switch (action.type) {
-    case actionTypes.LOAD_SALARY_SUCCESS:
+    case actionTypes.POSITION_LISTING_SUCCESS:
       return {
         ...state,
-        ...{ salaryDetails: action.data }
+        ...{ positions: action.data }
       };
     default:
       return state;
   }
 };
 
-export default salaryReducer;
+export default homeReducer;

@@ -1,4 +1,7 @@
 {
-    "testing1": "Testing Fr",
-    "welcome1": "Welcome, Fr channel"
+  "title": "Que valez-vous?",
+  "subTitle": "Recherchez par titre d'emploi pour trouver votre numéro de salaire magique.",
+  "link": {
+    "gotosalary": "Aller au salaire"
+  }
 }

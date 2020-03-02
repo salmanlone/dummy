@@ -1,4 +1,7 @@
 {
-    "testing1": "Testing En",
-    "welcome1": "Welcome, En channel"
+  "title": "What Are You Worth?",
+  "subTitle": "Search by job title to find your magic salary number.",
+  "link": {
+    "gotosalary": "Go to Salary"
+  }
 }

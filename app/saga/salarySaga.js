@@ -1,4 +1,4 @@
-import { failure, loadPositionListingSuccess } from "../actions/home";
+import { failure, loadPositionListingSuccess } from "../actions/salary";
 import actionTypes from "../actions/action-type";
 import es6promise from "es6-promise";
 import "isomorphic-unfetch";

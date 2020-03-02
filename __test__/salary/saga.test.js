@@ -3,7 +3,7 @@ import { put, takeLatest } from "redux-saga/effects";
 import actionTypes from "../../app/actions/action-type";
 import { loadPositionListingSuccess } from "../../app/actions";
 
-import rootHomeSaga, { loadPositionListing } from "../../app/saga/home-saga";
+import rootHomeSaga, { loadPositionListing } from "../../app/saga/salary-saga";
 
 describe("rootHomeSaga Saga", () => {
   const loadPositionListingSaga = loadPositionListing();

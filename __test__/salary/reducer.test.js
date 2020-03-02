@@ -1,7 +1,7 @@
 import produce from "immer";
 
 import homeReducer from "../../app/reducer/homeReducer";
-import { loadPositionListingSuccess } from "../../app/actions/home";
+import { loadPositionListingSuccess } from "../../app/actions/salaryDetail";
 
 describe("homeReducer", () => {
   let state;

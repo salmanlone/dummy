@@ -21,3 +21,4 @@ function* getSalaryDetail() {
     yield put(failure(err));
   }
 }
+  
