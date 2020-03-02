@@ -1,11 +1,11 @@
 import { combineReducers } from "redux";
-import homeReducer from "./homeReducer";
 import salaryReducer from "./salaryReducer";
+import salaryResultReducer from "./salaryResultReducer";
 import languageReducer from "./languageReducer";
 
 const allReducers = combineReducers({
-  homeReducer,
   salaryReducer,
+  salaryResultReducer,
   languageReducer
 });
 
