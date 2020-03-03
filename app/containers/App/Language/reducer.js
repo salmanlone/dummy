@@ -1,4 +1,4 @@
-import actionTypes from "../actions/action-type";
+import * as actionTypes from "./constants";
 
 const initState = {
   language: ""
