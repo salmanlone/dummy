@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { withTranslation, i18n } from "../i18n";
+import { withTranslation, i18n } from "../../../../i18n";
 import { connect } from "react-redux";
-import { changeLanguage } from "../app/actions/language";
+import { changeLanguage } from "./actions";
 
 const LangSelectorStyle = {
   padding: "10px",
