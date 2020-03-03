@@ -1,4 +1,7 @@
 {
-    "testing1": "Testing De",
-    "welcome1": "Welcome, De channel"
+  "title": "Was bist du wert?",
+  "subTitle": "Suchen Sie nach Berufsbezeichnung, um Ihre magische Gehaltsnummer zu finden.",
+  "link": {
+    "gotosalary": "Gehe zum Gehalt"
+  }
 }
