@@ -7,7 +7,7 @@ import Autocomplete from "../app/components/DumbComponents/Autocomplete";
 import Button from "../app/components/DumbComponents/Button";
 import { withTranslation, Link, i18n } from "../i18n";
 
-import { getSalaryDetail } from "../app/actions/salaryResult";
+import { getSalaryResult } from "../app/actions/salaryResult";
 import { loadPositionListing } from "../app/actions/salary";
 
 const Salary = ({ t, salaryResult }) => {

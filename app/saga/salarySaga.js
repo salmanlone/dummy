@@ -6,7 +6,7 @@ import { all, call, delay, put, takeLatest } from "redux-saga/effects";
 
 es6promise.polyfill();
 
-export default function* rootHomeSaga() {
+export default function* rootSalarySaga() {
   yield all([
     takeLatest(actionTypes.LOAD_POSITION_LISTING, loadPositionListing)
   ]);

@@ -5,7 +5,7 @@ const initState = {
   location: ""
 };
 
-const homeReducer = (state = initState, action) => {
+const salaryReducer = (state = initState, action) => {
   switch (action.type) {
     case actionTypes.POSITION_LISTING_SUCCESS:
       return {
@@ -17,4 +17,4 @@ const homeReducer = (state = initState, action) => {
   }
 };
 
-export default homeReducer;
+export default salaryReducer;

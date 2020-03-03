@@ -3,11 +3,11 @@ import { put, takeLatest } from "redux-saga/effects";
 import actionTypes from "../../app/actions/action-type";
 import { loadPositionListingSuccess } from "../../app/actions/salary";
 
-import rootHomeSaga, { loadPositionListing } from "../../app/saga/salarySaga";
+import rootSalarySaga, { loadPositionListing } from "../../app/saga/salarySaga";
 
-describe("rootHomeSaga Saga", () => {
+describe("rootSalarySaga Saga", () => {
   const loadPositionListingSaga = loadPositionListing();
-  const githubDataSaga = rootHomeSaga();
+  const githubDataSaga = rootSalarySaga();
 
   it("should start task to watch for LOAD_POSITION_LISTING action", () => {
     const takeLatestDescriptor = githubDataSaga.next().value;
@@ -17,7 +17,7 @@ describe("rootHomeSaga Saga", () => {
     //   takeLatest(actionTypes.LOAD_POSITION_LISTING, loadPositionListing)
     // );
     // expect(takeLatestDescriptor).toEqual(
-    //   takeLatest(actionTypes.LOAD_POSITION_LISTING, rootHomeSaga)
+    //   takeLatest(actionTypes.LOAD_POSITION_LISTING, rootSalarySaga)
     // );
   });
 
