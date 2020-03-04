@@ -1,6 +1,6 @@
 import * as actionTypes from "./constants";
 
-const initState = {
+export const initialState = {
   positions: "",
   locations: "",
 };
