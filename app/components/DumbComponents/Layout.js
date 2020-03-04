@@ -1,6 +1,6 @@
 import Header from "./Header";
 import Footer from "./Footer";
-import LanguageSwitch from '../../../pages/LanguageSelector';
+import LanguageSwitch from "../../containers/App/Language/LanguageSelector";
 
 const Layout = props => (
   <div>

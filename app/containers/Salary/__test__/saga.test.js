@@ -1,9 +1,9 @@
 import { put, takeLatest } from "redux-saga/effects";
 
-import actionTypes from "../../app/actions/action-type";
-import { loadPositionListingSuccess } from "../../app/actions/salary";
+import actionTypes from "../actions";
+import { loadPositionListingSuccess } from "../actions";
 
-import rootSalarySaga, { loadPositionListing } from "../../app/saga/salarySaga";
+import rootSalarySaga, { loadPositionListing } from "../saga";
 
 describe("rootSalarySaga Saga", () => {
   const loadPositionListingSaga = loadPositionListing();
