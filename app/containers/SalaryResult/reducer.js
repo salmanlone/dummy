@@ -1,15 +1,15 @@
 import * as actionTypes from "./constants";
 
-const initState = {
-  salaryDetails: []
+export const initialState = {
+  SalaryResultResponse: []
 };
 
-const salaryReducer = (state = initState, action) => {
+const salaryReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.LOAD_SALARY_SUCCESS:
       return {
         ...state,
-        ...{ salaryDetails: action.data }
+        ...{ SalaryResultResponse: action.data }
       };
     default:
       return state;

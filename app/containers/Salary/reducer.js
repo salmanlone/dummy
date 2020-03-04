@@ -5,7 +5,7 @@ const initState = {
   locations: "",
 };
 
-const salaryReducer = (state = initState, action) => {
+const salaryReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.POSITION_LISTING_SUCCESS:
       return {

@@ -1,7 +1,10 @@
 import React from "react";
+import { connect } from "react-redux";
+import { compose } from "redux";
 import Layout from "../app/components/DumbComponents/Layout";
 import { withTranslation, Link, i18n } from "../i18n";
 import { Trans } from "react-i18next";
+import { createStructuredSelector } from "reselect";
 
 import salaryDummyData from "../app/SalaryDetailDummy";
 
@@ -9,14 +12,16 @@ import BreadCrumb from "../app/components/DumbComponents/Breadcrumb";
 
 import Card from "../app/components/SmartComponents/Card";
 import SalaryGraph from "../app/components/SmartComponents/SalaryGraph";
+import { makeSelectSalaryResultResponse } from "../app/containers/SalaryResult/selector";
 
 const myStyle = {
   border: "1px solid"
 };
 
-const SalaryResult = ({ t }) => (
+const SalaryResult = ({ t, SalaryResultResponse }) => (
   <div>
     <Layout>
+      <p>{SalaryResultResponse}</p>
       <p> {t("testing")}</p>
       <BreadCrumb />
       <SalaryGraph style={myStyle} salary={salaryDummyData} />
@@ -48,8 +53,14 @@ const SalaryResult = ({ t }) => (
   </div>
 );
 
+const mapStateToProps = createStructuredSelector({
+  SalaryResultResponse: makeSelectSalaryResultResponse()
+});
+
 SalaryResult.getInitialProps = async () => ({
   namespacesRequired: ["salaryResult", "common"]
 });
 
-export default withTranslation(["salaryResult", "common"])(SalaryResult);
+export default compose(connect(mapStateToProps))(
+  withTranslation(["salaryResult", "common"])(SalaryResult)
+);
