@@ -1,6 +1,6 @@
-import actionTypes from "../../app/actions/action-type";
+import * as actionTypes from "../constants";
 
-import { getSalaryResult } from "../../app/actions/salaryResult";
+import { getSalaryResult } from "../actions";
 
 describe("Salary Result Actions", () => {
   describe("getSalaryResult", () => {

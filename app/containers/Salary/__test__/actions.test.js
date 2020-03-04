@@ -1,6 +1,6 @@
-import actionTypes from "../../app/actions/action-type";
+import * as actionTypes from "../constants";
 
-import { loadPositionListing } from "../../app/actions/salary";
+import { loadPositionListing } from "../actions";
 
 describe("Salary Actions", () => {
   describe("loadPositionListing", () => {
