@@ -1,7 +1,7 @@
 import produce from "immer";
 
-import salaryResultReducer from "../../app/reducer/salaryResultReducer";
-import { loadPositionListingSuccess } from "../../app/actions/salaryResult";
+import salaryResultReducer from "../reducer";
+import { loadPositionListingSuccess } from "../actions";
 
 describe("salaryResultReducer", () => {
   let state;
