@@ -8,9 +8,9 @@ import Button from "../app/components/DumbComponents/Button";
 import { withTranslation, Link, i18n } from "../i18n";
 
 import { getSalaryResult } from "../app/containers/SalaryResult/actions";
-import { loadPositionListing } from "../app/containers/Salary/actions";
+import { loadPositionListing, loadLocations } from "../app/containers/Salary/actions";
 
-const Salary = ({ t, salaryResult }) => {
+const Salary = ({ t, salaryResult, positionListing, locationsResults }) => {
   return (
     <div>
       <Head>
@@ -20,14 +20,14 @@ const Salary = ({ t, salaryResult }) => {
         <h1>{t("title")}</h1>
         <p>{t("subTitle")}</p>
         <br />
-        <Autocomplete placeholder={t("common:placeholder.job_title")} />
-        <Autocomplete placeholder={t("common:placeholder.location")} />
-        <Button
+        <Autocomplete placeholder={t("common:placeholder.job_title")} callbackHandler={positionListing}  />
+        <Autocomplete placeholder={t("common:placeholder.location")} callbackHandler={locationsResults} />
+        {/* <Button
           title={t("common:buttons.find_salary")}
           callbackHandler={salaryResult}
           goToLink="/SalaryResult"
-        />
-        {/* <Button title={t("common:buttons.find_salary")} callbackHandler={positionListing} goTo="/salary"     /> */}
+        /> */}
+        <Button title={t("common:buttons.find_salary")} callbackHandler={positionListing} />
         <br />
         <br />
         {/* <p>
@@ -52,8 +52,11 @@ const mapDispatchToProps = dispatch => {
     salaryResult: () => {
       dispatch(getSalaryResult());
     },
-    positionListing: () => {
-      dispatch(loadPositionListing());
+    positionListing: (event) => {
+      dispatch(loadPositionListing(event.target.value));
+    },
+    locationsResults: (event) => {
+      dispatch(loadLocations(event.target.value));
     }
   };
 };

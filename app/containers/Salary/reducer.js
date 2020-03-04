@@ -1,8 +1,8 @@
 import * as actionTypes from "./constants";
 
 const initState = {
-  position: "",
-  location: ""
+  positions: "",
+  locations: "",
 };
 
 const salaryReducer = (state = initState, action) => {
@@ -12,9 +12,14 @@ const salaryReducer = (state = initState, action) => {
         ...state,
         ...{ positions: action.data }
       };
+    case actionTypes.LOAD_LOCATIONS_SUCCESS:
+      return {
+        ...state,
+        ...{ locations: action.data }
+      };
     default:
       return state;
-  }
+  };
 };
 
 export default salaryReducer;
