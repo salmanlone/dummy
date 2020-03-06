@@ -15,7 +15,7 @@ const Card = props => {
       }
       {props.cardType == "salary"
         ? props.data.map(job =>
-          <div key={job.index}>{job}</div>
+          <div key={job.index}>{job} - $XX,XXX</div>
         ) : ""
       }
       {props.cardType == "related"
