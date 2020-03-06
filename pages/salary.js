@@ -50,7 +50,7 @@ const Salary = ({
         /> */}
         <Button
           title={t("common:buttons.find_salary")}
-          callbackHandler={positionListing}
+          callbackHandler={salaryResult}
         />
         <br />
         <br />

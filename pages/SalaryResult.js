@@ -21,7 +21,11 @@ const myStyle = {
 const SalaryResult = ({ t, SalaryResultResponse }) => (
   <div>
     <Layout>
-      <p>{SalaryResultResponse}</p>
+      {/* <p>
+        {SalaryResultResponse.length > 0
+          ? SalaryResultResponse
+          : "nothing to show."}
+      </p> */}
       <p> {t("testing")}</p>
       <BreadCrumb />
       <SalaryGraph style={myStyle} salary={salaryDummyData} />
