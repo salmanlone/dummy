@@ -3,10 +3,10 @@ import { initialState } from "./reducer";
 
 const selectSalary = state => state.salary || initialState;
 
-const makeSelectPosition = () =>
-  createSelector(selectSalary, salaryState => salaryState.position);
+const makeSelectPositions = () =>
+  createSelector(selectSalary, salaryState => salaryState.positions);
 
-const makeSelectLocation = () =>
-  createSelector(selectSalary, salaryState => salaryState.location);
+const makeSelectLocations = () =>
+  createSelector(selectSalary, salaryState => salaryState.locations);
 
-export { selectSalary, makeSelectPosition, makeSelectLocation };
+export { selectSalary, makeSelectPositions, makeSelectLocations };

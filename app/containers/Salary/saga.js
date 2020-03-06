@@ -2,15 +2,8 @@ import { loadPositionListingSuccess, loadLocationsSuccess } from "./actions";
 import * as actionTypes from "./constants";
 import es6promise from "../../../node_modules/es6-promise";
 import "../../../node_modules/isomorphic-unfetch";
-import {
-  all,
-  call,
-  delay,
-  put,
-  takeLatest
-} from "../../../node_modules/redux-saga/effects";
-import ApiService from '../../services/api_service';
-
+import { all, put, takeLatest } from "../../../node_modules/redux-saga/effects";
+import ApiService from "../../services/api_service";
 
 es6promise.polyfill();
 
@@ -21,18 +14,17 @@ export default function* rootSalarySaga() {
   ]);
 }
 
-
 export function* loadPositionListing() {
-  let requestUrl = "https://jsonplaceholder.typicode.com/users"
+  let requestUrl = "https://jsonplaceholder.typicode.com/users";
   const res = yield ApiService.Get(requestUrl);
   yield put(loadPositionListingSuccess(res.data));
 }
 
-
 export function* loadLocations(locationInput) {
-  let data = { query: locationInput.locationInput, countrId: "164" }
+  let data = { query: locationInput.locationInput, countrId: "164" };
   let landingURL = "https://www.monster.com/";
-  let requestUrl = landingURL + "Services/Locations.asmx/GetTrovixLocationsCompletionList";
+  let requestUrl =
+    landingURL + "Services/Locations.asmx/GetTrovixLocationsCompletionList";
   const headers = {
     headers: {
       "Content-Type": "application/json"
@@ -42,19 +34,3 @@ export function* loadLocations(locationInput) {
   let locations = res.data.d.Result.Items;
   yield put(loadLocationsSuccess(locations));
 }
-
-
-// export function* loadPositionListing(positionInput) {
-//   let data = { query: positionInput.positionInput, countrId: "164" }
-
-//   let landingURL = "https://www.monster.com/";
-//   let requestUrl = landingURL + "Services/Locations.asmx/GetTrovixLocationsCompletionList";
-//   const headers = {
-//     headers: {
-//       "Content-Type": "application/json"
-//     }
-//   };
-//   const res = yield ApiService.Post(requestUrl, data, headers);
-//   let positionList = res.data.d.Result.Items;
-//   yield put(loadLocationsSuccess(positionList));
-// }
