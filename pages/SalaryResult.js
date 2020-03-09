@@ -31,7 +31,7 @@ const column = {
   float: 'left',
   width: '33.33%',
   padding: '10px',
-  height: '250px'
+  height: '100%'
 }
 
 const column100 = {
@@ -50,13 +50,8 @@ const row = {
 const SalaryResult = ({ t, SalaryResultResponse }) => (
   <div>
     <Layout>
-      {/* <p>
-        {SalaryResultResponse.length > 0
-          ? SalaryResultResponse
-          : "nothing to show."}
-      </p> */}
-      <p> {t("testing")}</p>
-      <BreadCrumb />
+      {/* <p> {t("testing")}</p> */}
+      {/* <BreadCrumb /> */}
       <SalaryGraph
         style={{ ...myStyle, ...column100 }}
         location={location}
