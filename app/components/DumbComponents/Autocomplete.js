@@ -3,7 +3,7 @@ const linkStyle = {
 };
 
 const Autocomplete = props => (
-  <input style={linkStyle} type="text" placeholder={props.placeholder} />
+  <input style={linkStyle} type="text" placeholder={props.placeholder} onChange={e=> props.callbackHandler(e)} />
 );
 
 export default Autocomplete;
