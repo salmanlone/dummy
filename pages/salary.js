@@ -54,6 +54,13 @@ const Salary = ({
         />
         <br />
         <br />
+        <br />
+        <Button
+          goToLink={"/salaryresult"}
+          title={"Go to Salary Result"}
+        />
+        <br />
+        <br />
         {/* <p>
         {salaryData !== undefined
           ? "salaryData"
