@@ -5,7 +5,7 @@ import { createStructuredSelector } from "reselect";
 
 import Layout from "../app/components/DumbComponents/Layout";
 import Head from "next/head";
-import Autocomplete from "../app/components/DumbComponents/Autocomplete";
+import Autocomplete from "../app/containers/App/Autocomplete/Autocomplete";
 import Button from "../app/components/DumbComponents/Button";
 import { withTranslation, Link, i18n } from "../i18n";
 import { getSalaryResult } from "../app/containers/SalaryResult/actions";
@@ -39,15 +39,18 @@ const Salary = ({
           placeholder={t("common:placeholder.job_title")}
           callbackHandler={positionListing}
         />
+        <br />
         <Autocomplete
           placeholder={t("common:placeholder.location")}
           callbackHandler={locationsResults}
+          DataFromState= {locations}
         />
         {/* <Button
           title={t("common:buttons.find_salary")}
           callbackHandler={salaryResult}
           goToLink="/SalaryResult"
         /> */}
+        <br />
         <Button
           title={t("common:buttons.find_salary")}
           callbackHandler={salaryResult}
@@ -67,16 +70,23 @@ const Salary = ({
           : "test"}
       </p>
       <p>{salaryData ? salaryData : "test2"}</p> */}
-        <label>locations text: {locations[0]}</label>
+        {/* <label>locations text: {locations[0]}</label> */}
       </Layout>
     </div>
   );
 };
 
-const mapStateToProps = createStructuredSelector({
-  positions: makeSelectPositions(),
-  locations: makeSelectLocations()
-});
+// const mapStateToProps = createStructuredSelector({
+//   positions: makeSelectPositions(),
+//   // locations: makeSelectLocations()
+// });
+
+const mapStateToProps = state => {
+  return {
+    locations: state.salaryReducer.locations
+  };
+};
+
 
 const mapDispatchToProps = dispatch => {
   return {
