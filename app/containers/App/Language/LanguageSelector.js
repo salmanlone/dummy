@@ -34,6 +34,7 @@ const LanguageSelector = ({ t, lang, changeLanguage, pathname }) => {
         <option value="en">En</option>
         <option value="fr">Fr</option>
         <option value="de">de</option>
+        <option value="may">may</option>
       </select>
       <br />
     </div>
