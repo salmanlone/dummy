@@ -42,7 +42,7 @@ const getLangFromDomain = request => {
       req.i18n.changeLanguage(language);
     }
 
-    const actualPage = "/home";
+    const actualPage = "/salary";
     app.render(req, res, actualPage);
   });
 
