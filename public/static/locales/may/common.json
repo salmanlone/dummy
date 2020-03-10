@@ -1,0 +1,20 @@
+{
+  "testing": "ujian terjemahan di malay",
+  "welcome": "selamat datang",
+  "salary": "gaji",
+  "buttons": {
+    "find_salary": "mencari gaji"
+  },
+  "placeholder": {
+    "job_title": "tajuk pekerjaan",
+    "location": "lokasi"
+  },
+  "language_selection": "pemilihan bahasa",
+  "links": {
+    "find_jobs": "mencari pekerjaan",
+    "upload_resume": "muat naik semula",
+    "salary_tool": " alat gaji",
+    "resume_help": "meneruskan bantuan",
+    "career_advice": "nasihat kerjaya"
+  }
+}

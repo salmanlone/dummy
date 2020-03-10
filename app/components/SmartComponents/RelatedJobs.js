@@ -5,7 +5,7 @@ let myStyle
 
 const RelatedJobs = props => {
     return (
-        <div style={props.style} key={props.index}>
+        <div style={props.style}>
             <h3>{props.title}</h3>
             {props.data.Result.Jobs.map(job =>
                 <Card
