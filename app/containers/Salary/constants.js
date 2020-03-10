@@ -6,6 +6,11 @@ export const POSITION_LISTING_SUCCESS = "POSITION_LISTING_SUCCESS";
 export const LOAD_LOCATIONS = "LOAD_LOCATIONS"
 export const LOAD_LOCATIONS_SUCCESS = "LOAD_LOCATIONS_SUCCESS"
 
-// export const BASEURL = "https://www.monster.com/";
-// export const LOCATIONSURL = "Services/Locations.asmx/GetTrovixLocationsCompletionList";
 
+let ApiConstants = {
+    BASEURL: "https://www.monster.com/",
+    LOCATIONSURL: "Services/Locations.asmx/GetTrovixLocationsCompletionList",
+    POSITIONURL: "https://jsonplaceholder.typicode.com/users"
+
+}
+export default ApiConstants;
