@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "SET NODE_ENV=development & nodemon index.js",
     "build": "next build",
+    "deploy-production": "NODE_ENV=production next build && NODE_ENV=production node ./server.js",
     "start": "SET NODE_ENV=production & node index.js",
     "test": "jest",
     "test:watch": "jest --watchAll",
