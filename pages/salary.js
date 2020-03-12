@@ -82,7 +82,8 @@ const Salary = ({
 
 const mapStateToProps = state => {
   return {
-    locations: state.salaryReducer.locations
+    locations: state.salaryReducer.locations,
+    positions: state.salaryReducer.positions
   };
 };
 
