@@ -5,7 +5,7 @@ import { createStructuredSelector } from "reselect";
 
 import Layout from "../app/components/DumbComponents/Layout";
 import Head from "next/head";
-import Autocomplete from "../app/containers/App/Autocomplete/Autocomplete";
+import Autocomplete from "../app/containers/App/Autocomplete";
 import Button from "../app/components/DumbComponents/Button";
 import { withTranslation, Link, i18n } from "../i18n";
 import { getSalaryResult } from "../app/containers/SalaryResult/actions";
@@ -38,12 +38,14 @@ const Salary = ({
         <Autocomplete
           placeholder={t("common:placeholder.job_title")}
           callbackHandler={positionListing}
+          controlName="position"
         />
         <br />
         <Autocomplete
           placeholder={t("common:placeholder.location")}
           callbackHandler={locationsResults}
-          DataFromState= {locations}
+          DataFromState={locations}
+          controlName="location"
         />
         {/* <Button
           title={t("common:buttons.find_salary")}
@@ -58,10 +60,7 @@ const Salary = ({
         <br />
         <br />
         <br />
-        <Button
-          goToLink={"/salaryresult"}
-          title={"Go to Salary Result"}
-        />
+        <Button goToLink={"/post/somedata"} title={"Go to Salary Result"} />
         <br />
         <br />
         {/* <p>
@@ -86,7 +85,6 @@ const mapStateToProps = state => {
     locations: state.salaryReducer.locations
   };
 };
-
 
 const mapDispatchToProps = dispatch => {
   return {
