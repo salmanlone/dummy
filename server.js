@@ -57,8 +57,9 @@ const getLangFromDomain = request => {
     app.render(req, res, actualPage);
   });
 
-  server.get("/salary/q-:position/l-:location", (req, res) => {
-    const actualPage = "/salaryResult";
+  server.get("/salary/:position/:location", (req, res) => {
+    const actualPage =
+      "/salary/" + req.params.position + "-" + req.params.location;
     const queryParams = {
       position: req.params.position,
       location: req.params.location

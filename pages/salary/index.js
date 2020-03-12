@@ -3,20 +3,20 @@ import { connect } from "react-redux";
 import { compose } from "redux";
 import { createStructuredSelector } from "reselect";
 
-import Layout from "../app/components/DumbComponents/Layout";
+import Layout from "../../app/components/DumbComponents/Layout";
 import Head from "next/head";
-import Autocomplete from "../app/containers/App/Autocomplete";
-import Button from "../app/components/DumbComponents/Button";
-import { withTranslation, Link, i18n } from "../i18n";
-import { getSalaryResult } from "../app/containers/SalaryResult/actions";
+import Autocomplete from "../../app/containers/App/Autocomplete";
+import Button from "../../app/components/DumbComponents/Button";
+import { withTranslation, Link, i18n } from "../../i18n";
+import { getSalaryResult } from "../../app/containers/SalaryResult/actions";
 import {
   loadPositionListing,
   loadLocations
-} from "../app/containers/Salary/actions";
+} from "../../app/containers/Salary/actions";
 import {
   makeSelectPositions,
   makeSelectLocations
-} from "../app/containers/Salary/selector";
+} from "../../app/containers/Salary/selector";
 
 const Salary = ({
   t,
@@ -66,7 +66,12 @@ const Salary = ({
         <br />
         <br />
         <Button
-          goToLink={"/post/" + selectedPosition + "-" + selectedLocation}
+          goToLink={
+            "/salary/" +
+            selectedPosition.replace(" ", "-") +
+            "-" +
+            selectedLocation.replace(" ", "-")
+          }
           title={"Go to Salary Result"}
         />
         <br />
