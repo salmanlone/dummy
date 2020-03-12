@@ -21,6 +21,8 @@ export function* loadPositionListing() {
 }
 
 export function* loadLocations(locationInput) {
+  // TODO
+  // need to update the countryID for Canada or take it from the domain instead of making it hardcoded as it is now.
   let data = { query: locationInput.locationInput, countrId: "164" }
   const requestUrl = ApiConstants.BASEURL + ApiConstants.LOCATIONSURL;
   const headers = {
@@ -34,16 +36,19 @@ export function* loadLocations(locationInput) {
 }
 
 
-// export function* loadPositionListing(positionInput) {
-//   let data = { query: positionInput.positionInput, countrId: "164" }
 
-// const requestUrl =  ApiConstants.BASEURL + ApiConstants.POSITIONURL;
-//   const headers = {
-//     headers: {
-//       "Content-Type": "application/json"
-//     }
-//   };
-//   const res = yield ApiService.Post(requestUrl, data, headers);
-//   let positionList = res.data.d.Result.Items;
-//   yield put(loadLocationsSuccess(positionList));
-// }
+ // export function* loadPositionListing(positionInput) {
+   // TODO
+   // need to update the countryID for Canada or take it from the domain instead of making it hardcoded as it is now.
+ //   let data = { query: positionInput.positionInput, countrId: "164" }
+
+//  const requestUrl =  ApiConstants.BASEURL + ApiConstants.POSITIONURL;
+//    const headers = {
+//      headers: {
+//        "Content-Type": "application/json"
+//      }
+//    };
+//    const res = yield ApiService.Post(requestUrl, data, headers);
+//    let positionList = res.data.d.Result.Items;
+//    yield put(loadLocationsSuccess(positionList));
+//  }

@@ -38,6 +38,7 @@ const Salary = ({
         <Autocomplete
           placeholder={t("common:placeholder.job_title")}
           callbackHandler={positionListing}
+          // DataFromState= {positions}
         />
         <br />
         <Autocomplete
@@ -83,7 +84,8 @@ const Salary = ({
 
 const mapStateToProps = state => {
   return {
-    locations: state.salaryReducer.locations
+    locations: state.salaryReducer.locations,
+    positions: state.salaryReducer.positions
   };
 };
 
