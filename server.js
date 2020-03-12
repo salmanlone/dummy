@@ -36,6 +36,7 @@ const getLangFromDomain = request => {
 
   //  Custom Routes for the salary application
 
+  // '?p-position&l-location'
   server.get("/", (req, res) => {
     let language = getLangFromDomain(req);
     if (language != "") {
@@ -46,19 +47,17 @@ const getLangFromDomain = request => {
     app.render(req, res, actualPage);
   });
 
-  server.get("/testlang/:lang", (req, res) => {
-    const actualPage = "/";
-    req.i18n.changeLanguage(req.params.lang);
+  server.get("/salary", (req, res) => {
+    let language = getLangFromDomain(req);
+    if (language != "") {
+      req.i18n.changeLanguage(language);
+    }
+
+    const actualPage = "/salary";
     app.render(req, res, actualPage);
   });
 
-  server.get("/salaryResult/:position/", (req, res) => {
-    const actualPage = "/salaryResult";
-    const queryParams = { position: req.params.position };
-    app.render(req, res, actualPage, queryParams);
-  });
-
-  server.get("/salaryResult/:position/:location", (req, res) => {
+  server.get("/salary/q-:position/l-:location", (req, res) => {
     const actualPage = "/salaryResult";
     const queryParams = {
       position: req.params.position,
