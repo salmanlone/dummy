@@ -24,7 +24,9 @@ const Salary = ({
   positions,
   locations,
   positionListing,
-  locationsResults
+  locationsResults,
+  selectedLocation,
+  selectedPosition
 }) => {
   return (
     <div>
@@ -35,6 +37,9 @@ const Salary = ({
         <h1>{t("title")}</h1>
         <p>{t("subTitle")}</p>
         <br />
+
+        <p>{selectedPosition}</p>
+        <p>{selectedLocation}</p>
         <Autocomplete
           placeholder={t("common:placeholder.job_title")}
           callbackHandler={positionListing}
@@ -60,7 +65,10 @@ const Salary = ({
         <br />
         <br />
         <br />
-        <Button goToLink={"/post/somedata"} title={"Go to Salary Result"} />
+        <Button
+          goToLink={"/post/" + selectedPosition + "-" + selectedLocation}
+          title={"Go to Salary Result"}
+        />
         <br />
         <br />
         {/* <p>
@@ -83,7 +91,9 @@ const Salary = ({
 const mapStateToProps = state => {
   return {
     locations: state.salaryReducer.locations,
-    positions: state.salaryReducer.positions
+    positions: state.salaryReducer.positions,
+    selectedLocation: state.AutocompleteReducer.selectedLocation,
+    selectedPosition: state.AutocompleteReducer.selectedPosition
   };
 };
 
