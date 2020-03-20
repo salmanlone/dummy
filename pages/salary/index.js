@@ -18,6 +18,8 @@ import {
   makeSelectLocations
 } from "../../app/containers/Salary/selector";
 
+import { getPath } from "../../routing.config";
+
 const Salary = ({
   t,
   salaryResult,
@@ -26,8 +28,10 @@ const Salary = ({
   positionListing,
   locationsResults,
   selectedLocation,
-  selectedPosition
+  selectedPosition,
+  currentLanguage
 }) => {
+  const currentPath = getPath(currentLanguage);
   return (
     <div>
       <Head>
@@ -52,11 +56,6 @@ const Salary = ({
           DataFromState={locations}
           controlName="location"
         />
-        {/* <Button
-          title={t("common:buttons.find_salary")}
-          callbackHandler={salaryResult}
-          goToLink="/SalaryResult"
-        /> */}
         <br />
         <Button
           title={t("common:buttons.find_salary")}
@@ -67,7 +66,7 @@ const Salary = ({
         <br />
         <Button
           goToLink={
-            "/salary/" +
+            currentPath +
             selectedPosition.replace(" ", "-") +
             "-" +
             selectedLocation.replace(" ", "-")
@@ -98,7 +97,8 @@ const mapStateToProps = state => {
     locations: state.salaryReducer.locations,
     positions: state.salaryReducer.positions,
     selectedLocation: state.AutocompleteReducer.selectedLocation,
-    selectedPosition: state.AutocompleteReducer.selectedPosition
+    selectedPosition: state.AutocompleteReducer.selectedPosition,
+    currentLanguage: state.languageReducer.language
   };
 };
 
