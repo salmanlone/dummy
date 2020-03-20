@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { withTranslation, i18n } from "../../../../i18n";
 import { connect } from "react-redux";
 import { changeLanguage } from "./actions";
+import { useRouter } from "next/router";
 
 const LangSelectorStyle = {
   padding: "10px",
@@ -9,7 +10,16 @@ const LangSelectorStyle = {
   display: "inline"
 };
 
-function changeLang(event) {
+function changeLang(event, router) {
+  if (event.target.value === "en") {
+    router.push("/salary");
+  }
+  if (event.target.value === "fr") {
+    router.push("/salaire");
+  }
+  if (event.target.value === "de") {
+    router.push("/gehalt");
+  }
   i18n.changeLanguage(event.target.value);
 }
 
@@ -20,6 +30,8 @@ const LanguageSelector = ({ t, lang, changeLanguage, pathname }) => {
     setLanguage(currentlang);
   }, [lang]);
 
+  let router = useRouter();
+
   return (
     <div style={LangSelectorStyle}>
       <label>
@@ -27,7 +39,7 @@ const LanguageSelector = ({ t, lang, changeLanguage, pathname }) => {
       </label>
       <select
         onChange={e => {
-          changeLanguage(e), changeLang(e);
+          changeLanguage(e), changeLang(e, router);
         }}
         value={currentlang}
       >
