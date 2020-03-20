@@ -19,16 +19,16 @@ const NextI18Next = require("next-i18next").default;
 module.exports = new NextI18Next({
   defaultLanguage: "en",
   otherLanguages: ["fr", "de", "may"],
-  // localeSubpaths: {
-  //   fr: "fr",
-  //   en: "en",
-  //   de: "de",
-  //   may: "may"
-  // },
+  localeSubpaths: {
+    fr: "fr",
+    en: "en",
+    de: "de",
+    may: "may"
+  },
   // serverLanguageDetection = false ---> will disable the cache to save in the cookies for the first load and for the other refereshes
   serverLanguageDetection: false,
   browserLanguageDetection: false,
   detection: {
-    order: ["querystring", "cookie", "path", "navigator"]
+    order: ["path", "querystring", "cookie", "navigator"]
   }
 });

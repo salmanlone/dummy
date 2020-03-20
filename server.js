@@ -7,7 +7,10 @@ const nextI18next = require("./i18n");
 const dev = process.env.NODE_ENV !== "production";
 const port = process.env.PORT || 3000;
 const app = next({ dev });
-const handle = app.getRequestHandler();
+// const handle = app.getRequestHandler();
+
+const routes = require("./routes");
+const handle = routes.getRequestHandler(app);
 
 (async () => {
   await app.prepare();
@@ -15,30 +18,6 @@ const handle = app.getRequestHandler();
 
   await nextI18next.initPromise;
   server.use(nextI18NextMiddleware(nextI18next));
-
-  server.get("/salary", (req, res) => {
-    req.i18n.changeLanguage("en");
-    const actualPage = "/salary";
-    app.render(req, res, actualPage);
-  });
-
-  server.get("/salaire", (req, res) => {
-    req.i18n.changeLanguage("fr");
-    const actualPage = "/salary";
-    app.render(req, res, actualPage);
-  });
-
-  server.get("/gehalt", (req, res) => {
-    req.i18n.changeLanguage("de");
-    const actualPage = "/salary";
-    app.render(req, res, actualPage);
-  });
-
-  // server.get("/salaire/:query", (req, res) => {
-  //   req.i18n.changeLanguage("fr");
-  //   const actualPage = "/salary/query";
-  //   app.render(req, res, actualPage);
-  // });
 
   server.get("*", (req, res) => {
     handle(req, res);
