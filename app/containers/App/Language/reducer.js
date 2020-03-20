@@ -1,7 +1,7 @@
 import * as actionTypes from "./constants";
 
 const initState = {
-  language: ""
+  language: "en"
 };
 
 const languageReducer = (state = initState, action) => {
