@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { withTranslation, i18n } from "../../../../i18n";
+import { withTranslation, i18n, Router } from "../../../../i18n";
 import { connect } from "react-redux";
 import { changeLanguage } from "./actions";
-// import { useRouter } from "next/router";
-import { Router } from "../../../../routes";
 
 const LangSelectorStyle = {
   padding: "10px",
@@ -12,23 +10,20 @@ const LangSelectorStyle = {
 };
 
 function changeLang(event) {
-  i18n.changeLanguage(event.target.value);
-  // if (event.target.value === "en") {
-  //   console.log("en::", Router);
-  //   Router.pushRoute("salary");
-  // }
-  // if (event.target.value === "fr") {
-  //   console.log("fr::", Router);
-  //   Router.pushRoute("salaire");
-  // }
+  changeRoute(event.target.value);
 }
 
-const LanguageSelector = ({ t, lang, changeLanguage, pathname }) => {
-  // const [language, setLanguage] = useState(lang);
+const changeRoute = (lang) => {
+  i18n.changeLanguage(lang).then(() => {
+    if (lang === 'fr') {
+      Router.push("/salary", "/salarie");
+    } else
+      Router.push("/salary", "/salary");
+  });
+};
+
+const LanguageSelector = ({ t, updateLanguageState }) => {
   const currentlang = i18n.language;
-  // useEffect(() => {
-  //   setLanguage(currentlang);
-  // }, [language]);
 
   return (
     <div style={LangSelectorStyle}>
@@ -37,7 +32,8 @@ const LanguageSelector = ({ t, lang, changeLanguage, pathname }) => {
       </label>
       <select
         onChange={e => {
-          changeLang(e), changeLanguage(e);
+          changeLang(e),
+            updateLanguageState(e)
         }}
         value={currentlang}
       >
@@ -59,7 +55,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    changeLanguage: data => {
+    updateLanguageState: data => {
       dispatch(changeLanguage(data.target.value));
     }
   };

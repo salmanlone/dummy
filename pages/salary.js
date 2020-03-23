@@ -7,7 +7,7 @@ import Layout from "../app/components/DumbComponents/Layout";
 import Head from "next/head";
 import Autocomplete from "../app/containers/App/Autocomplete";
 import Button from "../app/components/DumbComponents/Button";
-import { withTranslation, Link, i18n } from "../i18n";
+import { withTranslation, Link, i18n, Router } from "../i18n";
 import { getSalaryResult } from "../app/containers/SalaryResult/actions";
 import {
   loadPositionListing,
@@ -19,8 +19,6 @@ import {
 } from "../app/containers/Salary/selector";
 
 import { getPath } from "../routing.config";
-
-import { Router } from "../routes";
 
 const Salary = ({
   t,
@@ -34,13 +32,20 @@ const Salary = ({
   currentLanguage
 }) => {
   const currentPath = getPath(currentLanguage);
+
   function changeFR() {
     console.log("fr::", Router);
-    Router.pushRoute("salaire");
+    Router.push("/salary", "/salarie");
+    i18n.changeLanguage('fr');
+    console.log('i18 : : ', i18n);
+
   }
   function changeEN() {
     console.log("en::", Router);
-    Router.pushRoute("salary");
+    Router.push("/salary", "/salary");
+    i18n.changeLanguage('en');
+    console.log('i18 : : ', i18n);
+
   }
   return (
     <div>
@@ -74,21 +79,36 @@ const Salary = ({
         <br />
         <br />
         <br />
+        <button onClick={changeFR}>FR</button>
+        <button onClick={changeEN}>EN</button>
+        <br />
+        <br />
+        {/* <Link href="/salaryResult" as="/salaryrr">
+          <a>
+            Salary Result testing
+          </a>
+        </Link> */}
+
+        <br />
+        {/* <Link as={`/salaryrr/${selectedPosition}`} href={{ pathname: '/salaryResult', query: {job: selectedPosition } } }
+        >
+          <a>
+            Salary Result testing  with query object
+          </a>
+        </Link> */}
+
         <Button
-          goToRoute={currentPath}
+          goToRoute="/salaryResult"
+          URL ="/salarie"
           params={
             selectedPosition.replace(" ", "-") +
             "-" +
             selectedLocation.replace(" ", "-")
           }
-          locale={currentLanguage}
-          title={"Go to Salary Result"}
+          title={"testing salary results French"}
         />
-        <button onClick={changeFR}>changeFR</button>
-        <button onClick={changeEN}>changeEN</button>
 
-        <br />
-        <br />
+
         {/* <p>
         {salaryData !== undefined
           ? "salaryData"
