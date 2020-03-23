@@ -5,7 +5,7 @@ import { createStructuredSelector } from "reselect";
 
 import Layout from "../app/components/DumbComponents/Layout";
 import Head from "next/head";
-import Autocomplete from "../app/components/DumbComponents/Autocomplete";
+import Autocomplete from "../app/containers/App/Autocomplete";
 import Button from "../app/components/DumbComponents/Button";
 import { withTranslation, Link, i18n } from "../i18n";
 import { getSalaryResult } from "../app/containers/SalaryResult/actions";
@@ -18,14 +18,30 @@ import {
   makeSelectLocations
 } from "../app/containers/Salary/selector";
 
+import { getPath } from "../routing.config";
+
+import { Router } from "../routes";
+
 const Salary = ({
   t,
   salaryResult,
   positions,
   locations,
   positionListing,
-  locationsResults
+  locationsResults,
+  selectedLocation,
+  selectedPosition,
+  currentLanguage
 }) => {
+  const currentPath = getPath(currentLanguage);
+  function changeFR() {
+    console.log("fr::", Router);
+    Router.pushRoute("salaire");
+  }
+  function changeEN() {
+    console.log("en::", Router);
+    Router.pushRoute("salary");
+  }
   return (
     <div>
       <Head>
@@ -35,23 +51,42 @@ const Salary = ({
         <h1>{t("title")}</h1>
         <p>{t("subTitle")}</p>
         <br />
+
+        <p>{selectedPosition}</p>
+        <p>{selectedLocation}</p>
         <Autocomplete
           placeholder={t("common:placeholder.job_title")}
           callbackHandler={positionListing}
+          controlName="position"
         />
+        <br />
         <Autocomplete
           placeholder={t("common:placeholder.location")}
           callbackHandler={locationsResults}
+          DataFromState={locations}
+          controlName="location"
         />
-        {/* <Button
-          title={t("common:buttons.find_salary")}
-          callbackHandler={salaryResult}
-          goToLink="/SalaryResult"
-        /> */}
+        <br />
         <Button
           title={t("common:buttons.find_salary")}
           callbackHandler={salaryResult}
         />
+        <br />
+        <br />
+        <br />
+        <Button
+          goToRoute={currentPath}
+          params={
+            selectedPosition.replace(" ", "-") +
+            "-" +
+            selectedLocation.replace(" ", "-")
+          }
+          locale={currentLanguage}
+          title={"Go to Salary Result"}
+        />
+        <button onClick={changeFR}>changeFR</button>
+        <button onClick={changeEN}>changeEN</button>
+
         <br />
         <br />
         {/* <p>
@@ -60,16 +95,26 @@ const Salary = ({
           : "test"}
       </p>
       <p>{salaryData ? salaryData : "test2"}</p> */}
-        <label>locations text: {locations[0]}</label>
+        {/* <label>locations text: {locations[0]}</label> */}
       </Layout>
     </div>
   );
 };
 
-const mapStateToProps = createStructuredSelector({
-  positions: makeSelectPositions(),
-  locations: makeSelectLocations()
-});
+// const mapStateToProps = createStructuredSelector({
+//   positions: makeSelectPositions(),
+//   // locations: makeSelectLocations()
+// });
+
+const mapStateToProps = state => {
+  return {
+    locations: state.salaryReducer.locations,
+    positions: state.salaryReducer.positions,
+    selectedLocation: state.AutocompleteReducer.selectedLocation,
+    selectedPosition: state.AutocompleteReducer.selectedPosition,
+    currentLanguage: state.languageReducer.language
+  };
+};
 
 const mapDispatchToProps = dispatch => {
   return {
