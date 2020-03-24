@@ -7,7 +7,7 @@ import Layout from "../app/components/DumbComponents/Layout";
 import Head from "next/head";
 import Autocomplete from "../app/containers/App/Autocomplete";
 import Button from "../app/components/DumbComponents/Button";
-import { withTranslation, Link, i18n, Router } from "../i18n";
+import { withTranslation, Link, i18n } from "../i18n";
 import { getSalaryResult } from "../app/containers/SalaryResult/actions";
 import {
   loadPositionListing,
@@ -17,8 +17,9 @@ import {
   makeSelectPositions,
   makeSelectLocations
 } from "../app/containers/Salary/selector";
+import { useRouter } from 'next/router';
 
-import { getPath } from "../routing.config";
+import { getPathByPathname } from "../routing.config";
 
 const Salary = ({
   t,
@@ -29,24 +30,13 @@ const Salary = ({
   locationsResults,
   selectedLocation,
   selectedPosition,
-  currentLanguage
+  currentLanguage,
 }) => {
-  const currentPath = getPath(currentLanguage);
 
-  function changeFR() {
-    console.log("fr::", Router);
-    Router.push("/salary", "/salarie");
-    i18n.changeLanguage('fr');
-    console.log('i18 : : ', i18n);
-
-  }
-  function changeEN() {
-    console.log("en::", Router);
-    Router.push("/salary", "/salary");
-    i18n.changeLanguage('en');
-    console.log('i18 : : ', i18n);
-
-  }
+  const Router = useRouter()
+  console.log('language : :', i18n)
+  const currentPath = getPathByPathname('/salaryResult', currentLanguage);
+  console.log('currentPath ::', currentPath);
   return (
     <div>
       <Head>
@@ -79,17 +69,6 @@ const Salary = ({
         <br />
         <br />
         <br />
-        <button onClick={changeFR}>FR</button>
-        <button onClick={changeEN}>EN</button>
-        <br />
-        <br />
-        {/* <Link href="/salaryResult" as="/salaryrr">
-          <a>
-            Salary Result testing
-          </a>
-        </Link> */}
-
-        <br />
         {/* <Link as={`/salaryrr/${selectedPosition}`} href={{ pathname: '/salaryResult', query: {job: selectedPosition } } }
         >
           <a>
@@ -98,8 +77,10 @@ const Salary = ({
         </Link> */}
 
         <Button
-          goToRoute="/salaryResult"
-          URL ="/salarie"
+          goToRoute={`/salaryResult/?query=${selectedPosition.replace(" ", "-") +
+            "-" +
+            selectedLocation.replace(" ", "-")}`}
+          asPath={currentPath.asPath}
           params={
             selectedPosition.replace(" ", "-") +
             "-" +

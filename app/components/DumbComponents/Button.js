@@ -9,9 +9,9 @@ const Button = props => {
       //   <button title={props.title} onClick={props.callbackHandler}>
       //     {props.title}
       //   </button>
-      // </Link>
+      // </Link>  
 
-      <Link as={props.URL + '/' + props.params} href={props.goToRoute} >
+      <Link as={props.asPath + props.params} href={props.goToRoute} >
         <button title={props.title} onClick={props.callbackHandler}>
           {props.title}
         </button>

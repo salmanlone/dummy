@@ -1,21 +1,29 @@
 const routingConfig = [
   {
     lang: "en",
-    salary: "salary",
-    path: "/salary/"
+    pageRoute: "/salary",
+    asPath: "/salary"
   },
   {
     lang: "fr",
-    salary: "salaire",
-    path: "/salaire/"
+    pageRoute: "/salary",
+    asPath: "/salarie"
   },
   {
-    lang: "de",
-    salary: "gehalt",
-    path: "/gehalt/"
-  }
+    lang: "en",
+    pageRoute: "/salaryResult",
+    asPath: "/salary/"
+  },
+  { 
+    lang: "fr",
+    pageRoute: "/salaryResult",
+    asPath: "/salarie/"
+  },
 ];
 
-export const getPath = language => {
-  return routingConfig.find(a => a.lang === language).path;
+// export const getPathByLang = language => {
+//   return routingConfig.find(a => a.lang === language);
+// };
+export const getPathByPathname = (pathname, lng) => {
+  return routingConfig.find(a => a.pageRoute === pathname &&  a.lang === lng);
 };
