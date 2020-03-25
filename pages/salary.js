@@ -18,7 +18,6 @@ import {
   makeSelectLocations
 } from "../app/containers/Salary/selector";
 import { useRouter } from 'next/router';
-
 import { getPathByPathname } from "../routing.config";
 
 const Salary = ({
@@ -34,9 +33,7 @@ const Salary = ({
 }) => {
 
   const Router = useRouter()
-  console.log('language : :', i18n)
   const currentPath = getPathByPathname('/salaryResult', currentLanguage);
-  console.log('currentPath ::', currentPath);
   return (
     <div>
       <Head>
@@ -62,31 +59,19 @@ const Salary = ({
           controlName="location"
         />
         <br />
-        <Button
-          title={t("common:buttons.find_salary")}
-          callbackHandler={salaryResult}
-        />
         <br />
-        <br />
-        <br />
-        {/* <Link as={`/salaryrr/${selectedPosition}`} href={{ pathname: '/salaryResult', query: {job: selectedPosition } } }
-        >
-          <a>
-            Salary Result testing  with query object
-          </a>
-        </Link> */}
 
         <Button
-          goToRoute={`/salaryResult/?query=${selectedPosition.replace(" ", "-") +
-            "-" +
-            selectedLocation.replace(" ", "-")}`}
+          goToRoute={`/salaryResult?query=${selectedPosition.replace(" ", "-") +
+            "-" + selectedLocation.replace(" ", "-")}`}
           asPath={currentPath.asPath}
           params={
             selectedPosition.replace(" ", "-") +
             "-" +
             selectedLocation.replace(" ", "-")
           }
-          title={"testing salary results French"}
+          title={t("common:buttons.find_salary")}
+          callbackHandler={salaryResult}
         />
 
 

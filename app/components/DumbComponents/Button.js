@@ -5,12 +5,6 @@ const Button = props => {
 
   if (btnWithLink) {
     return (
-      // <Link href={props.goToRoute + props.params} locale={props.locale}>
-      //   <button title={props.title} onClick={props.callbackHandler}>
-      //     {props.title}
-      //   </button>
-      // </Link>  
-
       <Link as={props.asPath + props.params} href={props.goToRoute} >
         <button title={props.title} onClick={props.callbackHandler}>
           {props.title}

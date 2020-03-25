@@ -17,23 +17,29 @@ const handle = app.getRequestHandler();
   await nextI18next.initPromise;
   server.use(nextI18NextMiddleware(nextI18next));
 
-  server.get('/salary', (req, res)=>{
+  server.get('/salary', (req, res) => {
+    req.i18n.changeLanguage('en');
     const actualPage = '/salary'
     app.render(req, res, actualPage)
   })
 
-  server.get('/salarie', (req, res)=>{
+  server.get('/salarie', (req, res) => {
+    // req.i18n.
+    // req.i18n.init({ defaultLanguage: 'fr' })
+    req.i18n.changeLanguage('fr');
     const actualPage = '/salary'
     app.render(req, res, actualPage)
   })
 
-  server.get('/salarie/:query', (req, res)=>{
+  server.get('/salarie/:query', (req, res) => {
+    req.i18n.changeLanguage('fr');
     const actualPage = '/salaryResult'
     const queryParams = req.params
     app.render(req, res, actualPage, queryParams)
   })
 
-  server.get('/salary/:query', (req, res)=>{
+  server.get('/salary/:query', (req, res) => {
+    req.i18n.changeLanguage('en');
     const actualPage = '/salaryResult'
     const queryParams = req.params
     app.render(req, res, actualPage, queryParams)

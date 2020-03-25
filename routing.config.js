@@ -14,16 +14,13 @@ const routingConfig = [
     pageRoute: "/salaryResult",
     asPath: "/salary/"
   },
-  { 
+  {
     lang: "fr",
     pageRoute: "/salaryResult",
     asPath: "/salarie/"
   },
 ];
 
-// export const getPathByLang = language => {
-//   return routingConfig.find(a => a.lang === language);
-// };
 export const getPathByPathname = (pathname, lng) => {
-  return routingConfig.find(a => a.pageRoute === pathname &&  a.lang === lng);
+  return routingConfig.find(a => a.pageRoute === pathname && a.lang === lng);
 };

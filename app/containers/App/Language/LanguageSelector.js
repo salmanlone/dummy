@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import { changeLanguage } from "./actions";
 import { getPathByPathname } from "../../../../routing.config";
 
-
 const LangSelectorStyle = {
   padding: "10px",
   backgroundColor: "#dddddd",
@@ -17,18 +16,14 @@ function changeLang(event) {
 
 const changeRoute = (lang) => {
   i18n.changeLanguage(lang).then(() => {
-    console.log('router obj::', Router.query);
     const currentPath = getPathByPathname(Router.route, lang);
     const query = (Router.query.query === undefined) ? "" : Router.query.query;
-    console.log('query::',query);
-    Router.push(currentPath.pageRoute + query, currentPath.asPath + query);
+    Router.push(currentPath.pageRoute + '?query=' + query, currentPath.asPath + query);
   });
 };
 
 const LanguageSelector = ({ t, updateLanguageState, lang }) => {
   // const currentlang = i18n.language;
-  // const currentlang = lang;
-
   const [language, setLanguage] = useState(lang);
   const currentlang = i18n.language;
   useEffect(() => {
@@ -50,8 +45,6 @@ const LanguageSelector = ({ t, updateLanguageState, lang }) => {
         value={currentlang}      >
         <option value="en">en</option>
         <option value="fr">fr</option>
-        {/* <option value="de">de</option> */}
-        {/* <option value="may">may</option> */}
       </select>
       <br />
     </div>
