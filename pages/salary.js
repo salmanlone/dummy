@@ -18,7 +18,7 @@ import {
   makeSelectLocations
 } from "../app/containers/Salary/selector";
 import { useRouter } from 'next/router';
-import { getPathByPathname } from "../routing.config";
+import { getPathByPathname, formatParams } from "../routing.config";
 
 const Salary = ({
   t,
@@ -34,6 +34,7 @@ const Salary = ({
 
   const Router = useRouter()
   const currentPath = getPathByPathname('/salaryResult', currentLanguage);
+  const formatedParams = formatParams(selectedPosition, selectedLocation);
   return (
     <div>
       <Head>
@@ -62,14 +63,8 @@ const Salary = ({
         <br />
 
         <Button
-          goToRoute={`/salaryResult?query=${selectedPosition.replace(" ", "-") +
-            "-" + selectedLocation.replace(" ", "-")}`}
-          asPath={currentPath.asPath}
-          params={
-            selectedPosition.replace(" ", "-") +
-            "-" +
-            selectedLocation.replace(" ", "-")
-          }
+          goToRoute={`/salaryResult${formatedParams.hrefParams}`}
+          asPath={currentPath.asPath + formatedParams.asPathParams}
           title={t("common:buttons.find_salary")}
           callbackHandler={salaryResult}
         />

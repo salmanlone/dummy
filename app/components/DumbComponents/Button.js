@@ -5,7 +5,7 @@ const Button = props => {
 
   if (btnWithLink) {
     return (
-      <Link as={props.asPath + props.params} href={props.goToRoute} >
+      <Link as={props.asPath} href={props.goToRoute} >
         <button title={props.title} onClick={props.callbackHandler}>
           {props.title}
         </button>
