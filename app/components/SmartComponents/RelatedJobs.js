@@ -1,8 +1,6 @@
 import React from "react";
 import Card from '../SmartComponents/Card';
 
-let myStyle
-
 const RelatedJobs = props => {
     return (
         <div style={props.style}>

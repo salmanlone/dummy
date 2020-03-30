@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { withTranslation, i18n } from "../../../../i18n";
+import { withTranslation, i18n, Router } from "../../../../i18n";
 import { connect } from "react-redux";
 import { changeLanguage } from "./actions";
-// import { useRouter } from "next/router";
-import { Router } from "../../../../routes";
+import { getPathByPathname } from "../../../../routing.config";
 
 const LangSelectorStyle = {
   padding: "10px",
@@ -12,23 +11,26 @@ const LangSelectorStyle = {
 };
 
 function changeLang(event) {
-  i18n.changeLanguage(event.target.value);
-  // if (event.target.value === "en") {
-  //   console.log("en::", Router);
-  //   Router.pushRoute("salary");
-  // }
-  // if (event.target.value === "fr") {
-  //   console.log("fr::", Router);
-  //   Router.pushRoute("salaire");
-  // }
+  changeRoute(event.target.value);
 }
 
-const LanguageSelector = ({ t, lang, changeLanguage, pathname }) => {
-  // const [language, setLanguage] = useState(lang);
+const changeRoute = (lang) => {
+  i18n.changeLanguage(lang).then(() => {
+    const currentPath = getPathByPathname(Router.route, lang);
+    const query = (Router.query.query === undefined) ? "" : Router.query.query;
+    Router.push(currentPath.pageRoute + '?query=' + query, currentPath.asPath + query);
+  });
+};
+
+const LanguageSelector = ({ t, updateLanguageState, lang }) => {
+  // const currentlang = i18n.language;
+  const [language, setLanguage] = useState(lang);
   const currentlang = i18n.language;
-  // useEffect(() => {
-  //   setLanguage(currentlang);
-  // }, [language]);
+  useEffect(() => {
+    setLanguage(currentlang);
+  }, [lang]);
+
+
 
   return (
     <div style={LangSelectorStyle}>
@@ -37,14 +39,12 @@ const LanguageSelector = ({ t, lang, changeLanguage, pathname }) => {
       </label>
       <select
         onChange={e => {
-          changeLang(e), changeLanguage(e);
+          changeLang(e),
+            updateLanguageState(e)
         }}
-        value={currentlang}
-      >
+        value={currentlang}      >
         <option value="en">en</option>
         <option value="fr">fr</option>
-        <option value="de">de</option>
-        <option value="may">may</option>
       </select>
       <br />
     </div>
@@ -59,15 +59,16 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    changeLanguage: data => {
+    updateLanguageState: data => {
       dispatch(changeLanguage(data.target.value));
     }
   };
 };
 
-LanguageSelector.getInitialProps = async () => ({
-  namespacesRequired: ["common"]
-});
+LanguageSelector.getInitialProps = async () => (
+  {
+    namespacesRequired: ["common"]
+  });
 
 export default connect(
   mapStateToProps,

@@ -17,10 +17,8 @@ import {
   makeSelectPositions,
   makeSelectLocations
 } from "../app/containers/Salary/selector";
-
-import { getPath } from "../routing.config";
-
-import { Router } from "../routes";
+import { useRouter } from 'next/router';
+import { getPathByPathname, formatParams } from "../routing.config";
 
 const Salary = ({
   t,
@@ -31,17 +29,12 @@ const Salary = ({
   locationsResults,
   selectedLocation,
   selectedPosition,
-  currentLanguage
+  currentLanguage,
 }) => {
-  const currentPath = getPath(currentLanguage);
-  function changeFR() {
-    console.log("fr::", Router);
-    Router.pushRoute("salaire");
-  }
-  function changeEN() {
-    console.log("en::", Router);
-    Router.pushRoute("salary");
-  }
+
+  const Router = useRouter()
+  const currentPath = getPathByPathname('/salaryResult', currentLanguage);
+  const formatedParams = formatParams(selectedPosition, selectedLocation);
   return (
     <div>
       <Head>
@@ -67,28 +60,16 @@ const Salary = ({
           controlName="location"
         />
         <br />
+        <br />
+
         <Button
+          goToRoute={`/salaryResult${formatedParams.hrefParams}`}
+          asPath={currentPath.asPath + formatedParams.asPathParams}
           title={t("common:buttons.find_salary")}
           callbackHandler={salaryResult}
         />
-        <br />
-        <br />
-        <br />
-        <Button
-          goToRoute={currentPath}
-          params={
-            selectedPosition.replace(" ", "-") +
-            "-" +
-            selectedLocation.replace(" ", "-")
-          }
-          locale={currentLanguage}
-          title={"Go to Salary Result"}
-        />
-        <button onClick={changeFR}>changeFR</button>
-        <button onClick={changeEN}>changeEN</button>
 
-        <br />
-        <br />
+
         {/* <p>
         {salaryData !== undefined
           ? "salaryData"

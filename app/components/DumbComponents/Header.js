@@ -1,4 +1,5 @@
-import { withTranslation, Link } from "../../../i18n";
+import { withTranslation, Link, i18n } from "../../../i18n";
+import { connect } from "react-redux";
 
 const linkStyle = {
   textDecoration: "none",
@@ -15,7 +16,7 @@ const ulStyle = {
   padding: 0
 }
 
-const Header = ({ t }) => (
+const Header = ({ t, lang }) => (
   <div>
     <ul style={ulStyle}>
       <li style={liStyle}>
@@ -25,7 +26,7 @@ const Header = ({ t }) => (
         <a href="https://www.monster.com/resumes/post-resume2" style={linkStyle}>{t('links.upload_resume')}</a>
       </li>
       <li style={liStyle}>
-        <Link href="/">
+        <Link href={i18n.language === 'en' ? "/salary" : "/salarie"}>
           <a style={linkStyle}>{t('links.salary_tool')}</a>
         </Link>
       </li>
@@ -41,4 +42,11 @@ const Header = ({ t }) => (
   </div>
 );
 
-export default withTranslation('common')(Header);
+const mapStateToProps = state => {
+  return {
+    lang: state.languageReducer.language
+  };
+};
+
+export default connect(
+  mapStateToProps)(withTranslation("common")(Header));

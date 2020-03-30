@@ -20,8 +20,8 @@ const Card = props => {
         : ""}
       <p>{props.blurb}</p>
       {props.cardType == "boost" || props.cardType == "advance"
-        ? props.data.map(job =>
-          <div key={job.name} onClick={() => { boostClick(job.description) }}>{job.name}</div>
+        ? props.data.map((job, index) =>
+          (<div key={index} onClick={() => { boostClick(job.description) }}>{job.name}</div>)
         )
         : ""
       }
@@ -33,8 +33,8 @@ const Card = props => {
         </div>
         : ""}
       {props.cardType == "salary"
-        ? props.data.map(job =>
-          <div key={job} onClick={() => { relatedClick(job) }}>{job} - $XX,XXX</div>
+        ? props.data.map((job,index) =>
+          (<div key={index} onClick={() => { relatedClick(job) }}>{job} - $XX,XXX</div>)
         ) : ""
       }
       {props.cardType == "related"

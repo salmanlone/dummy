@@ -3,17 +3,16 @@ import { connect } from "react-redux";
 import { compose } from "redux";
 import Layout from "../app/components/DumbComponents/Layout";
 import { withTranslation, Link, i18n } from "../i18n";
-import { Trans } from "react-i18next";
 import { createStructuredSelector } from "reselect";
 
 import salaryDummyData from "../app/DummyData/SalaryDetailDummy";
 import relatedJobsDummyData from "../app/DummyData/RelatedJobsDummy";
 
-import BreadCrumb from "../app/components/DumbComponents/Breadcrumb";
 
 import Card from "../app/components/SmartComponents/Card";
 import SalaryGraph from "../app/components/SmartComponents/SalaryGraph";
-import RelatedJobs from "../app/components/SmartComponents/relatedJobs";
+import RelatedJobs from "../app/components/SmartComponents/RelatedJobs";
+//app/components/SmartComponents/relatedJobs
 import { makeSelectSalaryResultResponse } from "../app/containers/SalaryResult/selector";
 import { useRouter } from "next/router";
 
