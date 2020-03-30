@@ -18,6 +18,12 @@ const handle = app.getRequestHandler();
   await nextI18next.initPromise;
   server.use(nextI18NextMiddleware(nextI18next));
 
+  server.get('/', (req, res) => {
+    req.i18n.changeLanguage('en');
+    const actualPage = '/salary'
+    app.render(req, res, actualPage)
+  })
+
   server.get('/salary', (req, res) => {
     req.i18n.changeLanguage('en');
     const actualPage = '/salary'
