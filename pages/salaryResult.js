@@ -11,7 +11,8 @@ import relatedJobsDummyData from "../app/DummyData/RelatedJobsDummy";
 
 import Card from "../app/components/SmartComponents/Card";
 import SalaryGraph from "../app/components/SmartComponents/SalaryGraph";
-import RelatedJobs from "../app/components/SmartComponents/relatedJobs";
+import RelatedJobs from "../app/components/SmartComponents/RelatedJobs";
+//app/components/SmartComponents/relatedJobs
 import { makeSelectSalaryResultResponse } from "../app/containers/SalaryResult/selector";
 import { useRouter } from "next/router";
 
