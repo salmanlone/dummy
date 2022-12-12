@@ -19,7 +19,7 @@
     "axios": "^0.19.2",
     "core-js": "^3.6.4",
     "es6-promise": "^4.2.8",
-    "express": "^4.16.3",
+    "express": "^4.17.3",
     "i18next": "^19.1.0",
     "immer": "^5.3.6",
     "isomorphic-unfetch": "^2.1.1",
